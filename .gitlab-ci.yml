@@ -1,0 +1,94 @@
+stages:
+  - rz-edge-ai-demo
+
+variables:
+  CI_BUILD_MANIFESTS_REF: master
+  CI_BUILD_SCRIPTS_REF: master
+  CI_DEMO_REPO: git@gitlab.renesas.solutions/spl2/machine-learning/rzg-foss-ai/rz-edge-ai-demo.git
+  CI_DEMO_REPO_BRANCH: master
+  CI_DEMO_REPO_PROTOCOL: ssh
+  CI_META_RENESAS_AI_REF: 3a8a259291e08544b5d916f3f81f82747425b488
+  CI_META_RENESAS_MANIFEST: bsp-rzg2__v1.0.8.xml
+  CI_META_RENESAS_MANIFEST_2L: bsp-rzg2l__v1.3-update1-public.xml
+  CI_META_RZ_EDGE_AI_DEMO_CONFIGURATION: templates/${CI_MACHINE}
+  CI_META_RZ_EDGE_AI_DEMO_REF: ${CI_COMMIT_REF_NAME}
+
+.rz-edge-ai-demo:
+  stage: rz-edge-ai-demo
+  needs: []
+
+.rz-edge-ai-rzg2:
+  extends: [.rz-edge-ai-demo, .rzg2]
+  image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-18.04-latest
+
+.rz-edge-ai-rzg2l:
+  extends: [.rz-edge-ai-demo, .smarc-rzg2l]
+  image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-20.04-latest
+  variables:
+    CI_META_RENESAS_MANIFEST: ${CI_META_RENESAS_MANIFEST_2L}
+
+.rzg2:
+  variables:
+    CI_GRAPHICS_LICENSE: prod
+    CI_SOC_FAMILY: rzg2
+
+.ek874:
+  variables:
+    CI_GRAPHICS_MACHINE: rzg2e-prod
+    CI_MACHINE: ek874
+
+.hihope-rzg2m:
+  variables:
+    CI_GRAPHICS_MACHINE: rzg2m-prod
+    CI_MACHINE: hihope-rzg2m
+
+.smarc-rzg2l:
+  variables:
+    CI_MACHINE: smarc-rzg2l
+    CI_SOC_FAMILY: rzg2l
+
+.smarc-rzg2lc:
+  variables:
+    CI_MACHINE: smarc-rzg2lc
+    CI_SOC_FAMILY: rzg2l
+
+.build_meta-rz-edge-ai-demo:
+  tags:
+    - yocto
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - if [ ${CI_COMMIT_TAG} ]; then CI_META_RZ_EDGE_AI_DEMO_REF=refs/tags/${CI_COMMIT_REF_NAME}; fi
+    - rm -rf build-scripts
+    - git clone git@gitlab.renesas.solutions:spl2/continuous-integration/build-scripts.git
+    - cd build-scripts
+    - git checkout ${CI_BUILD_SCRIPTS_REF}
+    - PATH=$PATH:$(pwd)
+    - mkdir build && cd build
+  script:
+    - build-with-mirror.sh -b ${CI_PROJECT_NAME}_rz-edge-ai-demo_${CI_SOC_FAMILY} -c -u -s ../build-scripts/build-manifest__${CI_SOC_FAMILY}__meta-rz-edge-ai-demo__gitlab-ci.sh
+    - upload-artifacts.sh -w -u -i -k -o url_list.csv
+    - mv build/tmp/deploy/sdk/*.sh build/tmp/deploy/sdk/ai-demos-sdk__${CI_JOB_NAME}.sh
+    - artifactorial-tool.sh -d ai-demos-sdk__${CI_JOB_NAME}.sh
+    - upload-artifacts.sh -l -s -o url_list.csv -A
+    - cat url_list.csv
+  artifacts:
+    name: "${CI_JOB_NAME}-${CI_JOB_ID}"
+    when: always
+    expire_in: 1 month
+    paths:
+      - build-scripts/build/url_list.csv
+      - build-scripts/build/build/conf/bblayers.conf
+      - build-scripts/build/build/conf/local.conf
+
+ek874:
+  extends: [.build_meta-rz-edge-ai-demo, .rz-edge-ai-rzg2, .ek874]
+
+hihope-rzg2m:
+  extends: [.build_meta-rz-edge-ai-demo, .rz-edge-ai-rzg2, .hihope-rzg2m]
+
+smarc-rzg2l:
+  extends: [.build_meta-rz-edge-ai-demo, .rz-edge-ai-rzg2l, .smarc-rzg2l]
+
+smarc-rzg2lc:
+  extends: [.build_meta-rz-edge-ai-demo, .rz-edge-ai-rzg2l, .smarc-rzg2lc]
