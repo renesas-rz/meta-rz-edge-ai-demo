@@ -57,27 +57,24 @@ variables:
     - yocto
   variables:
     GIT_STRATEGY: none
+    CI_SDK_NAME: rz-edge-ai-demo-sdk__${CI_JOB_NAME}.sh
   before_script:
     - if [ ${CI_COMMIT_TAG} ]; then CI_META_RZ_EDGE_AI_DEMO_REF=refs/tags/${CI_COMMIT_REF_NAME}; fi
     - rm -rf build-scripts
     - git clone git@gitlab.renesas.solutions:spl2/continuous-integration/build-scripts.git
     - cd build-scripts
-    - git checkout ${CI_BUILD_SCRIPTS_REF}
     - PATH=$PATH:$(pwd)
-    - mkdir build && cd build
+    - checkout-build-scripts.sh
   script:
-    - build-with-mirror.sh -b ${CI_PROJECT_NAME}_rz-edge-ai-demo_${CI_SOC_FAMILY} -c -u -s ../build-scripts/build-manifest__${CI_SOC_FAMILY}__meta-rz-edge-ai-demo__gitlab-ci.sh
-    - upload-artifacts.sh -w -u -i -k -o url_list.csv
-    - mv build/tmp/deploy/sdk/*.sh build/tmp/deploy/sdk/ai-demos-sdk__${CI_JOB_NAME}.sh
-    - artifactorial-tool.sh -d ai-demos-sdk__${CI_JOB_NAME}.sh
-    - upload-artifacts.sh -l -s -o url_list.csv -A
-    - cat url_list.csv
+    - ci-yocto-build.sh -s build-manifest__${CI_SOC_FAMILY}__meta-rz-edge-ai-demo__gitlab-ci.sh -p $(pwd)/build-scripts
+    - ls -l build/build/tmp/deploy/images/${CI_MACHINE}/
+    - ls -l build/build/tmp/deploy/sdk/
   artifacts:
     name: "${CI_JOB_NAME}-${CI_JOB_ID}"
     when: always
     expire_in: 1 month
     paths:
-      - build-scripts/build/url_list.csv
+      - build-scripts/url_list.csv
       - build-scripts/build/build/conf/bblayers.conf
       - build-scripts/build/build/conf/local.conf
 
