@@ -279,11 +279,36 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 ## How to use the demo
 ### Selecting Demo Mode
 * Click "Mode->Shopping Basket" to select the shopping basket mode.
+* Click "Mode->Object Detection" to select the object detection mode.
 
-### Shopping Basket Mode (Default)
+### Object Detection Mode (Default)
+* Click "Start/Stop" to run inference continuously.
+    * Stop clears the inference and FPS results and resumes live camera feed.
+* Click "Inference->Load Model" to load a different model and label file.
+
+Expected results:
+* Boxes are drawn around the detected objects.
+* Names of detected items are shown in the top left-hand corner of each box.
+* Percentage confidence is shown for each object.
+* Total FPS and inference time is shown in the top right-hand corner of
+the application.
+
+### Shopping Basket Mode
 * Click "Process Basket" to capture an image from the webcam stream.
     * Inference is automatically run on the image and the results are displayed.
 * Click "Next Basket" to clear inference results and resume live camera feed.
+
+Expected results:
+* Boxes are drawn around the detected items.
+* Names of detected items are shown in the top left-hand corner of each box.
+* Percentage confidence is shown for each item.
+* Names and prices for each item are shown in an alphabetical list on the
+right-hand side of the application.
+* Total cost is shown in the bottom right hand-side.
+* Total items and inference time is shown in the top right-hand corner of
+the application.
+
+### Common Mode Settings
 * Click "About->Hardware" to read the board information.
 * Click "About->License" to read the GPLv2 license that this app is licensed
 under.
@@ -298,16 +323,6 @@ OV5645 sensor.
 * Click "Camera Settings->Enable/Disable Auto White Balance" when using a
 supported MIPI CSI camera to enable or disable the automatic white balance
 feature of the OV5645 sensor.
-
-Expected results:
-* Boxes are drawn around the detected items.
-* Names of detected items are shown in the top left-hand corner of each box.
-* Percentage confidence is shown for each item.
-* Names and prices for each item are shown in an alphabetical list on the
-right-hand side of the application.
-* Total cost is shown in the bottom right hand-side.
-* Total items and inference time is shown in the top right-hand corner of
-the application.
 
 
 ## Notes

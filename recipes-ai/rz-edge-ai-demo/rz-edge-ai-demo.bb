@@ -19,6 +19,7 @@ RZ_EDGE_AI_DEMO_REPO_BRANCH ?= "master"
 SRC_URI = " \
 	git://${RZ_EDGE_AI_DEMO_REPO};protocol=${RZ_EDGE_AI_DEMO_REPO_PROTOCOL};branch=${RZ_EDGE_AI_DEMO_REPO_BRANCH};name=rz-edge-ai-demo \
 	file://icons/ \
+	file://labels/ \
 	file://logos/ \
 	file://models/ \
 	file://populate_scripts.sh \
@@ -35,10 +36,12 @@ do_configure_prepend () {
 do_install_append () {
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/icons
+	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/labels
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/logos
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/models
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/scripts
 	install -m 444 ${WORKDIR}/icons/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/icons
+	install -m 444 ${WORKDIR}/labels/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/labels
 	install -m 444 ${WORKDIR}/logos/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/logos
 	install -m 444 ${WORKDIR}/models/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/models
 	install -m 555 ${B}/rz-edge-ai-demo ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}
