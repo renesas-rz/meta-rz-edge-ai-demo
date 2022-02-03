@@ -7,8 +7,8 @@ variables:
   CI_DEMO_REPO: git@gitlab.renesas.solutions/spl2/machine-learning/rzg-foss-ai/rz-edge-ai-demo.git
   CI_DEMO_REPO_BRANCH: master
   CI_DEMO_REPO_PROTOCOL: ssh
-  CI_META_RENESAS_AI_REF: 3a8a259291e08544b5d916f3f81f82747425b488
-  CI_META_RENESAS_MANIFEST: bsp-rzg2__v1.0.8.xml
+  CI_META_RENESAS_AI_REF: bfba8dd8644e681a7c065c40172ceb61999ea1cd
+  CI_META_RENESAS_MANIFEST: bsp-rzg2__v1.0.10-update1.xml
   CI_META_RENESAS_MANIFEST_2L: bsp-rzg2l__v1.3-update1-public.xml
   CI_META_RZ_EDGE_AI_DEMO_CONFIGURATION: templates/${CI_MACHINE}
   CI_META_RZ_EDGE_AI_DEMO_REF: ${CI_COMMIT_REF_NAME}
