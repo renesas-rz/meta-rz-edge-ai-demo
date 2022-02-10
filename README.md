@@ -285,6 +285,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 * Click "Start Inference/Stop Inference" to run inference continuously.
     * Stop Inference clears the inference and FPS results and resumes live camera feed.
 * Click "Inference->Load Model" to load a different model and label file.
+* Click "Input->Load Image/Video" to load a static image or video file.
 
 Expected results:
 * Boxes are drawn around the detected objects.
@@ -299,6 +300,7 @@ the application.
 * Click "Process Basket" to capture an image from the webcam stream.
     * Inference is automatically run on the image and the results are displayed.
 * Click "Next Basket" to clear inference results and resume live camera feed.
+* Click "Input->Load Image" to load a static image file.
 
 Expected results:
 * Boxes are drawn around the detected items.
@@ -317,6 +319,7 @@ under.
 * Click "About->Exit" to close the application.
 * Click "Inference->Enable/Disable ArmNN Delegate" to enable or disable ArmNN
 Delegate during inference.
+* Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Camera Settings->Enable/Disable Auto Gain" when using a supported MIPI
 CSI camera to enable or disable the automatic gain feature of the OV5645 sensor.
 * Click "Camera Settings->Enable/Disable Auto Exposure" when using a supported
