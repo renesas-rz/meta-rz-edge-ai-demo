@@ -78,9 +78,9 @@ git checkout -b tmp 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 cd $WORK/meta-qt5
 git checkout -b tmp c1b0c9f546289b1592d7a895640de103723a0305
 cd $WORK/meta-rzg2
-git checkout -b tmp rzg2l_bsp_v1.3-update1
+git checkout -b tmp rzg2l_bsp_v1.3-update2
 cd $WORK/meta-renesas-ai
-git checkout -b tmp bfba8dd8644e681a7c065c40172ceb61999ea1cd
+git checkout -b tmp d3102bad822aa58c84b03611a3b0901b7a0d1a86
 cd $WORK/meta-rzg2
 git am $WORK/meta-renesas-ai/patches/meta-rzg2/dunfell-rzg2l/0001-Enable-RZ-G2L-Qt-SDK-builds.patch
 ```
@@ -104,10 +104,10 @@ Japan: https://www.renesas.com/jp/ja/products/rzg-linux-platform/rzg-marcketplac
 
 RZ/G2L and RZ/G2LC:
 ```
-America: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.51_EN.zip](https://www.renesas.com/us/en/software-tool/rzg2l-video-codec-library-evaluation-version-v051)
-Europe: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.51_EN.zip](https://www.renesas.com/eu/en/software-tool/rzg2l-video-codec-library-evaluation-version-v051)
-Asia: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.51_EN.zip](https://www.renesas.com/sg/en/software-tool/rzg2l-video-codec-library-evaluation-version-v051)
-Japan: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.51_EN.zip](https://www.renesas.com/jp/ja/software-tool/rzg2l-video-codec-library-evaluation-version-v051)
+America: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/us/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
+Europe: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/eu/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
+Asia: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/sg/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
+Japan: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/jp/ja/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
 ```
 
 5. Add the proprietary libraries
@@ -124,9 +124,9 @@ unset PKGS_DIR
 RZ/G2L and RZ/G2LC:
 ```
 cd $WORK
-unzip RTK0EF0045Z15001ZJ-v0.51_EN.zip
+unzip RTK0EF0045Z15001ZJ-v0.53_EN.zip
 unzip RTK0EF0045Z13001ZJ-v0.8_EN.zip
-tar -xf RTK0EF0045Z15001ZJ-v0.51_EN/meta-rz-features.tar.gz
+tar -xf RTK0EF0045Z15001ZJ-v0.53_EN/meta-rz-features.tar.gz
 tar -xf RTK0EF0045Z13001ZJ-v0.8_EN/meta-rz-features.tar.gz
 ```
 
