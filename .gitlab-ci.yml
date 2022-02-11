@@ -3,7 +3,6 @@ stages:
 
 variables:
   CI_BUILD_MANIFESTS_REF: master
-  CI_BUILD_SCRIPTS_REF: master
   CI_DEMO_REPO: git@gitlab.renesas.solutions/spl2/machine-learning/rzg-foss-ai/rz-edge-ai-demo.git
   CI_DEMO_REPO_BRANCH: master
   CI_DEMO_REPO_PROTOCOL: ssh
@@ -64,7 +63,7 @@ variables:
     - git clone git@gitlab.renesas.solutions:spl2/continuous-integration/build-scripts.git
     - cd build-scripts
     - PATH=$PATH:$(pwd)
-    - checkout-build-scripts.sh
+    - git checkout "${CI_BUILD_SCRIPTS_REF:-$CI_COMMIT_REF_NAME}" && export CI_BUILD_SCRIPTS_REF=$CI_COMMIT_REF_NAME || true
   script:
     - ci-yocto-build.sh -s build-manifest__${CI_SOC_FAMILY}__meta-rz-edge-ai-demo__gitlab-ci.sh -p $(pwd)/build-scripts
     - ls -l build/build/tmp/deploy/images/${CI_MACHINE}/
