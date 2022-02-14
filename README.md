@@ -282,8 +282,8 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 * Click "Mode->Object Detection" to select the object detection mode.
 
 ### Object Detection Mode (Default)
-* Click "Start/Stop" to run inference continuously.
-    * Stop clears the inference and FPS results and resumes live camera feed.
+* Click "Start Inference/Stop Inference" to run inference continuously.
+    * Stop Inference clears the inference and FPS results and resumes live camera feed.
 * Click "Inference->Load Model" to load a different model and label file.
 
 Expected results:
