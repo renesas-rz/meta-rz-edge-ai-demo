@@ -38,7 +38,7 @@ git clone git://git.yoctoproject.org/meta-gplv2.git
 git clone https://github.com/meta-qt5/meta-qt5.git
 git clone https://github.com/renesas-rz/meta-rzg2.git
 git clone https://github.com/renesas-rz/meta-renesas-ai.git
-git clone https://github.com/renesas-rz/meta-renesas-ai-demos.git
+git clone https://github.com/renesas-rz/meta-rz-edge-ai-demo.git
 ```
 
 RZ/G2E and RZ/G2M:
