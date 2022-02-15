@@ -290,6 +290,8 @@ Expected results:
 * Boxes are drawn around the detected objects.
 * Names of detected items are shown in the top left-hand corner of each box.
 * Percentage confidence is shown for each object.
+* Names and count for each object are shown in an alphabetical list on the
+right-hand side of the application.
 * Total FPS and inference time is shown in the top right-hand corner of
 the application.
 
