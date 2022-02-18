@@ -317,7 +317,7 @@ the application.
 * Click "About->License" to read the GPLv2 license that this app is licensed
 under.
 * Click "About->Exit" to close the application.
-* Click "Inference->Enable/Disable ArmNN Delegate" to enable or disable ArmNN
+* Click "Inference Engine->Enable/Disable ArmNN Delegate" to enable or disable ArmNN
 Delegate during inference.
 * Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Camera Settings->Enable/Disable Auto Gain" when using a supported MIPI
