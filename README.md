@@ -278,8 +278,8 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 
 ## How to use the demo
 ### Selecting Demo Mode
-* Click "Mode->Shopping Basket" to select the shopping basket mode.
-* Click "Mode->Object Detection" to select the object detection mode.
+* Click "Demo Mode->Shopping Basket" to select the shopping basket mode.
+* Click "Demo Mode->Object Detection" to select the object detection mode.
 
 ### Object Detection Mode (Default)
 * Click "Start Inference/Stop Inference" to run inference continuously.
