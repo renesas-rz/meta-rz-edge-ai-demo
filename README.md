@@ -313,10 +313,6 @@ right-hand side of the application.
 the application.
 
 ### Common Mode Settings
-* Click "About->Hardware" to read the board information.
-* Click "About->License" to read the GPLv2 license that this app is licensed
-under.
-* Click "About->Exit" to close the application.
 * Click "Inference Engine->Enable/Disable ArmNN Delegate" to enable or disable ArmNN
 Delegate during inference.
 * Click "Input->Load Camera Feed" to return to live camera feed.
@@ -328,6 +324,10 @@ OV5645 sensor.
 * Click "Camera Settings->Enable/Disable Auto White Balance" when using a
 supported MIPI CSI camera to enable or disable the automatic white balance
 feature of the OV5645 sensor.
+* Click "About->Hardware" to read the board information.
+* Click "About->License" to read the GPLv2 license that this app is licensed
+under.
+* Click "About->Exit" to close the application.
 
 
 ## Notes
