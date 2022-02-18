@@ -313,9 +313,11 @@ right-hand side of the application.
 the application.
 
 ### Common Mode Settings
-* Click "Inference Engine->Enable/Disable ArmNN Delegate" to enable or disable ArmNN
-Delegate during inference.
 * Click "Input->Load Camera Feed" to return to live camera feed.
+* Click "Inference Engine->TensorFlow Lite + ArmNN delegate" to run inference
+using TensorFlow Lite with ArmNN delegate enabled.
+* Click "Inference Engine->TensorFlow Lite" to run inference using TensorFlow
+Lite.
 * Click "About->Hardware" to read the board information.
 * Click "About->License" to read the GPLv2 license that this app is licensed
 under.
