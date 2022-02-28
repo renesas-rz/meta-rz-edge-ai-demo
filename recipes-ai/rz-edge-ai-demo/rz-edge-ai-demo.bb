@@ -26,7 +26,8 @@ SRC_URI = " \
 	file://populate_scripts.sh \
 "
 
-SRCREV_rz-edge-ai-demo ?= "c6f8bfe01ecb701a86bf936b58c0ff078dd66380"
+# v1.0
+SRCREV_rz-edge-ai-demo ?= "26400c55192fdfb10763e2b7ede2592a57ccb19e"
 
 S = "${WORKDIR}/git"
 
