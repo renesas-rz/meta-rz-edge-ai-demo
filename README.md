@@ -39,6 +39,7 @@ git clone https://github.com/meta-qt5/meta-qt5.git
 git clone https://github.com/renesas-rz/meta-rzg2.git
 git clone https://github.com/renesas-rz/meta-renesas-ai.git
 git clone https://github.com/renesas-rz/meta-rz-edge-ai-demo.git
+git clone https://git.yoctoproject.org/meta-virtualization
 ```
 
 RZ/G2E and RZ/G2M:
@@ -52,6 +53,7 @@ RZ/G2E and RZ/G2M:
 ```
 cd $WORK/poky
 git checkout -b tmp 7e7ee662f5dea4d090293045f7498093322802cc
+git cherry-pick 0810ac6b92
 cd $WORK/meta-openembedded
 git checkout -b tmp 352531015014d1957d6444d114f4451e241c4d23
 cd $WORK/meta-linaro
@@ -60,6 +62,8 @@ cd $WORK/meta-gplv2
 git checkout -b tmp f875c60ecd6f30793b80a431a2423c4b98e51548
 cd $WORK/meta-qt5
 git checkout -b tmp c1b0c9f546289b1592d7a895640de103723a0305
+cd $WORK/meta-virtualization
+git checkout -b tmp b704c689b67639214b9568a3d62e82df27e9434f
 cd $WORK/meta-rzg2
 git checkout -b tmp BSP-1.0.10-update1
 cd $WORK/meta-renesas-ai
@@ -70,15 +74,17 @@ RZ/G2L and RZ/G2LC:
 ```
 cd $WORK/poky
 git checkout -b tmp dunfell-23.0.5
-git cherry-pick 9e444
+git cherry-pick e256885889
 cd $WORK/meta-openembedded
-git checkout -b tmp cc6fc6b1641ab23089c1e3bba11e0c6394f0867c
+git checkout -b tmp ab9fca485e13f6f2f9761e1d2810f87c2e4f060a
 cd $WORK/meta-gplv2
 git checkout -b tmp 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 cd $WORK/meta-qt5
 git checkout -b tmp c1b0c9f546289b1592d7a895640de103723a0305
+cd $WORK/meta-virtualization
+git checkout -b tmp 9e9868ef3d6e5da7f0ecd0680fcd69324593842b
 cd $WORK/meta-rzg2
-git checkout -b tmp rzg2l_bsp_v1.3-update2
+git checkout -b tmp rzg2l_bsp_v1.4
 cd $WORK/meta-renesas-ai
 git checkout -b tmp v4.6.0
 cd $WORK/meta-rzg2
@@ -102,13 +108,17 @@ Asia: https://www.renesas.com/sg/en/products/rzg-linux-platform/rzg-marcketplace
 Japan: https://www.renesas.com/jp/ja/products/rzg-linux-platform/rzg-marcketplace/verified-linux-package/rzg2-mlp-eva.html
 ```
 
-RZ/G2L and RZ/G2LC:
-```
-America: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/us/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
-Europe: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/eu/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
-Asia: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/sg/en/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
-Japan: [RTK0EF0045Z13001ZJ-v0.8_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.53_EN.zip](https://www.renesas.com/jp/ja/software-tool/rzg2l-video-codec-library-evaluation-version-v053)
-```
+RZ/G2L:  
+America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/us/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
+Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/eu/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
+Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/sg/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
+Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/jp/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
+
+RZ/G2LC:
+America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
+Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
+Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
+Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
 
 5. Add the proprietary libraries
 
@@ -121,14 +131,23 @@ sh docs/sample/copyscript/copy_proprietary_softwares.sh -f $PKGS_DIR
 unset PKGS_DIR
 ```
 
-RZ/G2L and RZ/G2LC:
+RZ/G2L:
 ```
 cd $WORK
-unzip RTK0EF0045Z15001ZJ-v0.53_EN.zip
-unzip RTK0EF0045Z13001ZJ-v0.8_EN.zip
-tar -xf RTK0EF0045Z15001ZJ-v0.53_EN/meta-rz-features.tar.gz
-tar -xf RTK0EF0045Z13001ZJ-v0.8_EN/meta-rz-features.tar.gz
+unzip RTK0EF0045Z15001ZJ-v0.55_EN.zip
+unzip RTK0EF0045Z13001ZJ-v0.81_EN.zip
+tar -xf RTK0EF0045Z15001ZJ-v0.55_EN.zip/meta-rz-features.tar.gz
+tar -xf RTK0EF0045Z13001ZJ-v0.81_EN.zip/meta-rz-features.tar.gz
 ```
+
+RZ/G2LC:
+```
+cd $WORK
+unzip RTK0EF0045Z13001ZJ-v0.81_EN.zip
+tar -xf RTK0EF0045Z13001ZJ-v0.81_EN.zip/meta-rz-features.tar.gz
+```
+
+
 
 6. Execute source command
 ```
