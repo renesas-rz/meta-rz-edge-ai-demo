@@ -67,7 +67,7 @@ git checkout -b tmp b704c689b67639214b9568a3d62e82df27e9434f
 cd $WORK/meta-rzg2
 git checkout -b tmp BSP-1.0.10-update1
 cd $WORK/meta-renesas-ai
-git checkout -b tmp v4.6.0
+git checkout -b tmp v4.7.0
 ```
 
 RZ/G2L and RZ/G2LC:
@@ -86,7 +86,7 @@ git checkout -b tmp 9e9868ef3d6e5da7f0ecd0680fcd69324593842b
 cd $WORK/meta-rzg2
 git checkout -b tmp rzg2l_bsp_v1.4
 cd $WORK/meta-renesas-ai
-git checkout -b tmp v4.6.0
+git checkout -b tmp v4.7.0
 cd $WORK/meta-rzg2
 git am $WORK/meta-renesas-ai/patches/meta-rzg2/dunfell-rzg2l/0001-Enable-RZ-G2L-Qt-SDK-builds.patch
 ```

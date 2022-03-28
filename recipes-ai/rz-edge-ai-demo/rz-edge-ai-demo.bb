@@ -1,7 +1,7 @@
 SUMMARY = "RZ Edge AI Demo"
 DESCRIPTION = "Build and install the RZ/G Edge AI Demo application"
 
-inherit populate_sdk_qt5
+inherit populate_sdk_qt5 qmake5
 require recipes-qt/qt5/qt5.inc
 
 LICENSE = "GPL-2.0"
@@ -34,6 +34,9 @@ S = "${WORKDIR}/git"
 do_configure_prepend () {
 	export SDKTARGETSYSROOT="../recipe-sysroot"
 }
+
+EXTRA_QMAKEVARS_PRE_smarc-rzg2l += "DEFINES+=DUNFELL"
+EXTRA_QMAKEVARS_PRE_smarc-rzg2lc += "DEFINES+=DUNFELL"
 
 do_install_append () {
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}
