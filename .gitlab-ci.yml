@@ -11,6 +11,8 @@ variables:
   CI_META_RENESAS_MANIFEST_2L: bsp-rzg2l__v1.3-update2.xml
   CI_META_RZ_EDGE_AI_DEMO_CONFIGURATION: templates/${CI_MACHINE}
   CI_META_RZ_EDGE_AI_DEMO_REF: ${CI_COMMIT_REF_NAME}
+  YOCTO_DL_DIR: ${CI_PROJECT_DIR}/downloads
+  YOCTO_SSTATE_DIR: ${CI_PROJECT_DIR}/sstate_cache
 
 .rz-edge-ai-demo:
   stage: rz-edge-ai-demo
@@ -70,6 +72,13 @@ variables:
     - ci-yocto-build.sh -s build-manifest__${CI_SOC_FAMILY}__meta-rz-edge-ai-demo__gitlab-ci.sh -p $(pwd)/build-scripts
     - ls -l build/build/tmp/deploy/images/${CI_MACHINE}/
     - ls -l build/build/tmp/deploy/sdk/
+  cache:
+    - key: "downloads"
+      paths:
+        - ${YOCTO_DL_DIR}
+    - key: "sstate-cache-${CI_MACHINE}"
+      paths:
+        - ${YOCTO_SSTATE_DIR}
   artifacts:
     name: "${CI_JOB_NAME}-${CI_JOB_ID}"
     when: always
