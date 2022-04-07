@@ -335,6 +335,8 @@ the application.
 * Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Inference Engine->TensorFlow Lite + ArmNN delegate" to run inference
 using TensorFlow Lite with ArmNN delegate enabled.
+* Click "Inference Engine->TensorFlow Lite + XNNPack delegate" to run inference
+using TensorFlow Lite with XNNPack delegate enabled (RZ/G2L and RZ/G2LC only).
 * Click "Inference Engine->TensorFlow Lite" to run inference using TensorFlow
 Lite.
 * Click "About->Hardware" to read the board information.
