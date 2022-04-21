@@ -316,6 +316,7 @@ right-hand side of the application.
 the application.
 
 ### Shopping Basket Mode
+* Click "Load AI Model" to load a different model, label file and prices file.
 * Click "Process Basket" to capture an image from the webcam stream.
     * Inference is automatically run on the image and the results are displayed.
 * Click "Next Basket" to clear inference results and resume live camera feed.
