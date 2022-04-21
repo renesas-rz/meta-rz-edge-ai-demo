@@ -87,8 +87,6 @@ cd $WORK/meta-rzg2
 git checkout -b tmp rzg2l_bsp_v1.4
 cd $WORK/meta-renesas-ai
 git checkout -b tmp v4.7.0
-cd $WORK/meta-rzg2
-git am $WORK/meta-renesas-ai/patches/meta-rzg2/dunfell-rzg2l/0001-Enable-RZ-G2L-Qt-SDK-builds.patch
 ```
 
 3. Define machine to build for
