@@ -297,6 +297,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 ### Selecting Demo Mode
 * Click "Demo Mode->Shopping Basket" to select the shopping basket mode.
 * Click "Demo Mode->Object Detection" to select the object detection mode.
+* Click "Demo Mode->Pose Estimation" to select the pose estimation mode.
 
 ### Object Detection Mode (Default)
 * Click "Start Inference/Stop Inference" to run inference continuously.
@@ -330,6 +331,17 @@ right-hand side of the application.
 * Total items and inference time is shown in the top right-hand corner of
 the application.
 
+### Pose Estimation Mode
+* Click "Start Inference/Stop Inference" to run inference continuously.
+* Click "Use Thunder/Lightning" to change between Lightning and Thunder
+MoveNet models.
+* Click "Input->Load Image/Video" to load a static image or video file.
+
+Expected results:
+* Lines are drawn which connect the joints and facial features of the detected person.
+* Total FPS and inference time is shown in the top right-hand corner of
+the application.
+
 ### Common Mode Settings
 * Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Inference Engine->TensorFlow Lite + ArmNN delegate" to run inference
@@ -349,3 +361,7 @@ under.
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
 for mass production.  
 Any software support provided is for evaluation purposes only.
+
+### Pose Estimation Mode
+The Pose Estimation Mode is currently only supported on the RZ/G2L and RZ/G2LC
+platforms due to the MoveNet models requiring TensorFlow v2.5.3 to function correctly.
