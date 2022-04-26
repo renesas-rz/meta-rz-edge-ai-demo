@@ -106,17 +106,17 @@ Asia: https://www.renesas.com/sg/en/products/rzg-linux-platform/rzg-marcketplace
 Japan: https://www.renesas.com/jp/ja/products/rzg-linux-platform/rzg-marcketplace/verified-linux-package/rzg2-mlp-eva.html
 ```
 
-RZ/G2L:  
-America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/us/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
-Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/eu/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
-Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/sg/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
-Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/jp/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)  
+RZ/G2L:\
+America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/us/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)\
+Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/eu/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)\
+Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/sg/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)\
+Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version), [RTK0EF0045Z15001ZJ-v0.55_EN.zip](https://www.renesas.com/jp/en/software-tool/video-codec-library-evaluation-version-rzg2l-and-rzv2l)\
 
-RZ/G2LC:
-America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
-Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
-Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
-Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)  
+RZ/G2LC:\
+America: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)\
+Europe: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)\
+Asia: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)\
+Japan: [RTK0EF0045Z13001ZJ-v0.81_EN.zip](https://www.renesas.com/jp/ja/products/microcontrollers-microprocessors/rz-arm-based-high-end-32-64-bit-mpus/rzg2l-mali-graphic-library-evaluation-version)\
 
 5. Add the proprietary libraries
 
@@ -180,6 +180,14 @@ Once the build is completed, the Kernel, device tree and RFS are located in:
 ```
 $WORK/build/tmp/deploy/images/$PLATFORM/
 ```
+
+### Build Script ###
+A simple build script has been created to manage the build process automatically.\
+Before running the script you will need to download the relevant proprietary
+libraries from the Renesas website. See the Renesas RZ/G2 and RZ/G2L BSP readme
+files for details on how to do this.
+
+Run `./scripts/build.sh -h` to get an overview on how to use the script.
 
 ## Flashing instructions
 ### Partition and Format the SD
@@ -361,7 +369,7 @@ under.
 ## Notes
 ### OV5645 camera sensor
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
-for mass production.  
+for mass production.\
 Any software support provided is for evaluation purposes only.
 
 ### Pose Estimation Mode
