@@ -14,8 +14,11 @@ set -e
 
 ################################################################################
 # Global parameters
-RZ_EDGE_AI_DEMO_URL="${CI_REPOSITORY_URL:-https://github.com/renesas-rz/meta-rz-edge-ai-demo.git}"
-RZ_EDGE_AI_DEMO_VER="${CI_COMMIT_REF_NAME:-master}"
+META_RZ_EDGE_AI_DEMO_URL="${CI_REPOSITORY_URL:-https://github.com/renesas-rz/meta-rz-edge-ai-demo.git}"
+META_RZ_EDGE_AI_DEMO_VER="${CI_COMMIT_REF_NAME:-master}"
+RZ_EDGE_AI_DEMO_REPO="${CI_DEMO_REPO:-github.com/renesas-rz/rz-edge-ai-demo.git}"
+RZ_EDGE_AI_DEMO_REPO_BRANCH="${CI_DEMO_REPO_BRANCH:-master}"
+RZ_EDGE_AI_DEMO_REPO_PROTOCOL="${CI_DEMO_REPO_PROTOCOL:-https}"
 WORK_DIR="${PWD}"
 COMMAND_NAME="$0"
 INSTALL_DEPENDENCIES=false
@@ -246,8 +249,8 @@ download_source () {
 
 		update_git_repo \
 			meta-rz-edge-ai-demo \
-			${RZ_EDGE_AI_DEMO_URL} \
-			${RZ_EDGE_AI_DEMO_VER}
+			${META_RZ_EDGE_AI_DEMO_URL} \
+			${META_RZ_EDGE_AI_DEMO_VER}
 	elif [ ${FAMILY} == "rzg2l" ]; then
 		update_git_repo \
 			poky \
@@ -288,8 +291,8 @@ download_source () {
 
 		update_git_repo \
 			meta-rz-edge-ai-demo \
-			${RZ_EDGE_AI_DEMO_URL} \
-			${RZ_EDGE_AI_DEMO_VER}
+			${META_RZ_EDGE_AI_DEMO_URL} \
+			${META_RZ_EDGE_AI_DEMO_VER}
 	fi
 }
 
@@ -343,6 +346,17 @@ configure_build () {
 
 	if $SKIP_LICENSE_WARNING; then
 		sed -i 's/#LICENSE_FLAGS_WHITELIST/LICENSE_FLAGS_WHITELIST/g' ./conf/local.conf
+	fi
+
+        echo RZ_EDGE_AI_DEMO_REPO = \"${RZ_EDGE_AI_DEMO_REPO}\" >> ./conf/local.conf
+        echo RZ_EDGE_AI_DEMO_REPO_BRANCH = \"${RZ_EDGE_AI_DEMO_REPO_BRANCH}\" >> ./conf/local.conf
+        echo RZ_EDGE_AI_DEMO_REPO_PROTOCOL = \"${RZ_EDGE_AI_DEMO_REPO_PROTOCOL}\" >> ./conf/local.conf
+	if [ ! -z ${CI_DEMO_REPO_REV+x} ]; then
+		if [ ${CI_DEMO_REPO_REV} = "AUTOREV" ]; then
+			echo SRCREV_rz-edge-ai-demo = \"\${AUTOREV}\" >> ./conf/local.conf
+		else
+			echo SRCREV_rz-edge-ai-demo = \"${CI_DEMO_REPO_REV}\" >> ./conf/local.conf
+		fi
 	fi
 }
 
@@ -398,7 +412,7 @@ copy_output () {
 
 
 echo "#################################################################"
-echo "RZ Edge AI Demo version: ${RZ_EDGE_AI_DEMO_VER}"
+echo "RZ Edge AI Demo version: ${META_RZ_EDGE_AI_DEMO_VER}"
 echo "RZ/G AI BSP version: ${RZG_AI_BSP_VER}"
 echo "RZ/G BSP version: ${RZG_BSP_VER}"
 echo "Working Directory: ${WORK_DIR}"

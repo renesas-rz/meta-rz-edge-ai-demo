@@ -8,6 +8,10 @@ variables:
   PROP_LIBS_DIR: ${CI_PROJECT_DIR}/prop_libs
   DL_DIR: ${CI_PROJECT_DIR}/downloads
   SSTATE_DIR: ${CI_PROJECT_DIR}/sstate_cache
+  CI_DEMO_REPO: git@gitlab.renesas.solutions/spl2/machine-learning/rzg-foss-ai/rz-edge-ai-demo.git
+  CI_DEMO_REPO_BRANCH: master
+  CI_DEMO_REPO_PROTOCOL: ssh
+  CI_DEMO_REPO_REV: "AUTOREV"
 
 .rzg2:
   image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-18.04-latest
