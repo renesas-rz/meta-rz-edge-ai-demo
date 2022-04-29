@@ -373,6 +373,19 @@ do_sdk_build () {
 	if [ ${FAMILY} == "rzg2" ]; then
 		bitbake core-image-qt-sdk -c populate_sdk
 	elif [ ${FAMILY} == "rzg2l" ]; then
+		# We are sometimes seeing a failure when building the SDK. It complains
+		# that:
+		# ERROR: When reparsing *meta-environment.bb:do_generate_content, the
+		# basehash value changed from x to y. The metadata is not deterministic
+		# and this needs to be fixed.
+		# ERROR: The following commands may help:
+		# ERROR: $ bitbake meta-environment-smarc-rzg2l -cdo_generate_content -Snone
+		# ERROR: Then:
+		# ERROR: $ bitbake meta-environment-smarc-rzg2l -cdo_generate_content -Sprintdiff
+		# So this is what we're doing below.
+		bitbake core-image-qt -c populate_sdk || \
+		bitbake meta-environment-${PLATFORM} -c generate_content -Snone && \
+		bitbake meta-environment-${PLATFORM} -c generate_content -Sprintdiff && \
 		bitbake core-image-qt -c populate_sdk
 	fi
 }
