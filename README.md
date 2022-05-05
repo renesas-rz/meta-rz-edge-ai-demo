@@ -341,6 +341,8 @@ Expected results:
 * Lines are drawn which connect the joints and facial features of the detected person.
 * Total FPS and inference time is shown in the top right-hand corner of
 the application.
+* 2-D Point Projection of the identified pose is shown in the right-hand side of the
+application.
 
 ### Common Mode Settings
 * Click "Input->Load Camera Feed" to return to live camera feed.
