@@ -181,6 +181,24 @@ Once the build is completed, the Kernel, device tree and RFS are located in:
 $WORK/build/tmp/deploy/images/$PLATFORM/
 ```
 
+10. SDK build
+
+RZ/G2E and RZ/G2M:
+```
+bitbake core-image-qt-sdk -c populate_sdk
+```
+
+RZ/G2L and RZ/G2LC:
+```
+bitbake core-image-qt -c populate_sdk
+```
+
+Once the build is completed, the SDK is located in:
+
+```
+$WORK/build/tmp/deploy/sdk/
+```
+
 ### Build Script ###
 A simple build script has been created to manage the build process automatically.\
 Before running the script you will need to download the relevant proprietary
