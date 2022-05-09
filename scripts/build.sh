@@ -393,11 +393,13 @@ do_sdk_build () {
 copy_output () {
 	echo "#################################################################"
 	echo "Copying output..."
-
-	local bin_dir=$WORK_DIR/build/tmp/deploy/images/${PLATFORM}
 	mkdir -p ${OUTPUT_DIR}/${PLATFORM}
+	local bin_dir=$WORK_DIR/build/tmp/deploy/images/${PLATFORM}
 
 	if [ $BUILD_SDK != "only" ]; then
+		echo "Contents of images directory..."
+		ls -la ${bin_dir}
+
 		if [ ${FAMILY} == "rzg2" ]; then
 			cp ${bin_dir}/core-image-*-${PLATFORM}.tar.gz ${OUTPUT_DIR}/${PLATFORM}
 			cp ${bin_dir}/Image-${PLATFORM}.bin ${OUTPUT_DIR}/${PLATFORM}
@@ -416,8 +418,13 @@ copy_output () {
 	fi
 
 	if [ $BUILD_SDK != "false" ]; then
+		echo "Contents of sdk directory..."
+		ls -la $WORK_DIR/build/tmp/deploy/sdk/
 		cp $WORK_DIR/build/tmp/deploy/sdk/*.sh ${OUTPUT_DIR}/${PLATFORM}/rz-edge-ai-demo-sdk_${PLATFORM}.sh
 	fi
+
+	echo "Contents of output directory..."
+	ls -l ${OUTPUT_DIR}/${PLATFORM}
 }
 
 ################################################################################
