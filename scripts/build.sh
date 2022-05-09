@@ -390,6 +390,14 @@ do_sdk_build () {
 	fi
 }
 
+# $1..$n: File (including path) to copy to output directory
+copy_file () {
+	for file in "$@"; do
+		echo "Copying ${file}..."
+		cp ${file} ${OUTPUT_DIR}/${PLATFORM} || echo "${file} not found!"
+	done
+}
+
 copy_output () {
 	echo "#################################################################"
 	echo "Copying output..."
@@ -400,26 +408,55 @@ copy_output () {
 		echo "Contents of images directory..."
 		ls -la ${bin_dir}
 
-		if [ ${FAMILY} == "rzg2" ]; then
-			cp ${bin_dir}/core-image-*-${PLATFORM}.tar.gz ${OUTPUT_DIR}/${PLATFORM}
-			cp ${bin_dir}/Image-${PLATFORM}.bin ${OUTPUT_DIR}/${PLATFORM}
-			cp ${bin_dir}/Image-*-${PLATFORM}*.dtb ${OUTPUT_DIR}/${PLATFORM}
-		elif [ ${FAMILY} == "rzg2l" ]; then
-			cp ${bin_dir}/core-image-*-${PLATFORM}.tar.gz ${OUTPUT_DIR}/${PLATFORM}
-			cp ${bin_dir}/Image-${PLATFORM}.bin ${OUTPUT_DIR}/${PLATFORM}
-			cp ${bin_dir}/*${PLATFORM}.dtb ${OUTPUT_DIR}/${PLATFORM}
-		fi
-
-		# Save license information
-		pushd "${bin_dir}/../../" > /dev/null
+		# RFS / Wic
+		copy_file "${bin_dir}/core-image-qt-${PLATFORM}.tar.gz"
+		copy_file "${bin_dir}/core-image-qt-${PLATFORM}.wic.gz"
+		# Kernel / modules
+		copy_file "${bin_dir}/Image-${PLATFORM}.bin"
+		copy_file "${bin_dir}/modules-${PLATFORM}.tgz"
+		# Manifest
+		copy_file "${bin_dir}/core-image-qt-${PLATFORM}.manifest"
+		# License information
+		pushd "$WORK_DIR/build/tmp/deploy/" > /dev/null
 		tar czf licenses-${PLATFORM}.tar.gz licenses
-		cp licenses-${PLATFORM}.tar.gz ${OUTPUT_DIR}/${PLATFORM}
+		copy_file licenses-${PLATFORM}.tar.gz
 		popd > /dev/null
+
+		if [ ${FAMILY} == "rzg2" ]; then
+			# DTB
+			copy_file $(find "${bin_dir}" -type l -iname "*image-*.dtb")
+			# Bootloaders
+			copy_file "${bin_dir}/bootparam_sa0.srec"
+			copy_file "${bin_dir}/bl2-${PLATFORM}.srec"
+			copy_file "${bin_dir}/cert_header_sa6.srec"
+			copy_file "${bin_dir}/bl31-${PLATFORM}.srec"
+			copy_file "${bin_dir}/tee-${PLATFORM}.srec"
+			copy_file "${bin_dir}/u-boot-elf-${PLATFORM}.srec"
+			copy_file "${bin_dir}/*Flash_writer*.mot"
+		elif [ ${FAMILY} == "rzg2l" ]; then
+			# DTB
+			copy_file $(find "${bin_dir}" -type l -iname "*${PLATFORM}*.dtb")
+			# Bootloaders
+			copy_file "${bin_dir}/bl2_bp-${PLATFORM}.bin"
+			copy_file "${bin_dir}/bl2-${PLATFORM}.bin"
+			copy_file "${bin_dir}/bl31-${PLATFORM}.bin"
+			copy_file "${bin_dir}/fip-${PLATFORM}.bin"
+			copy_file "${bin_dir}/u-boot-elf-${PLATFORM}.srec"
+			copy_file "${bin_dir}/Flash_Writer*.mot"
+			if [ ${PLATFORM} == "smarc-rzg2l" ]; then
+				copy_file "${bin_dir}/bl2_bp-${PLATFORM}_pmic.bin"
+				copy_file "${bin_dir}/bl2-${PLATFORM}_pmic.bin"
+				copy_file "${bin_dir}/bl31-${PLATFORM}_pmic.bin"
+				copy_file "${bin_dir}/fip-${PLATFORM}_pmic.bin"
+			fi
+		fi
 	fi
 
 	if [ $BUILD_SDK != "false" ]; then
-		echo "Contents of sdk directory..."
+		echo "Contents of SDK directory..."
 		ls -la $WORK_DIR/build/tmp/deploy/sdk/
+		# SDK
+		echo "Copying SDK..."
 		cp $WORK_DIR/build/tmp/deploy/sdk/*.sh ${OUTPUT_DIR}/${PLATFORM}/rz-edge-ai-demo-sdk_${PLATFORM}.sh
 	fi
 
