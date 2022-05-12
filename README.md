@@ -75,6 +75,7 @@ RZ/G2L and RZ/G2LC:
 cd $WORK/poky
 git checkout -b tmp dunfell-23.0.13
 git cherry-pick e256885889
+git cherry-pick cfd897e213d
 cd $WORK/meta-openembedded
 git checkout -b tmp ab9fca485e13f6f2f9761e1d2810f87c2e4f060a
 cd $WORK/meta-gplv2
