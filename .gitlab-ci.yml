@@ -89,13 +89,21 @@ build_smarc-rzg2lc:
   extends: [".build", ".smarc-rzg2lc"]
 
 
+.sdk_rules: &sdk_rules
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_COMMIT_BRANCH
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_TAG
+      when: always
+
 sdk_hihope-rzg2m:
   stage: build-sdk
   extends: [".build", ".hihope-rzg2m"]
   needs: []
   variables:
     EXTRA_BUILD_ARGS: -T
-  when: manual
+  <<: *sdk_rules
 
 sdk_ek874:
   stage: build-sdk
@@ -103,7 +111,7 @@ sdk_ek874:
   needs: []
   variables:
     EXTRA_BUILD_ARGS: -T
-  when: manual
+  <<: *sdk_rules
 
 sdk_smarc-rzg2l:
   stage: build-sdk
@@ -111,7 +119,7 @@ sdk_smarc-rzg2l:
   needs: []
   variables:
     EXTRA_BUILD_ARGS: -T
-  when: manual
+  <<: *sdk_rules
 
 sdk_smarc-rzg2lc:
   stage: build-sdk
@@ -119,5 +127,5 @@ sdk_smarc-rzg2lc:
   needs: []
   variables:
     EXTRA_BUILD_ARGS: -T
-  when: manual
+  <<: *sdk_rules
 
