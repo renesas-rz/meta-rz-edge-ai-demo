@@ -359,9 +359,9 @@ right-hand side of the application.
 the application.
 
 ### Pose Estimation Mode
+* Click "Load AI Model" to load a different pose model. Currently supported: MoveNet,
+BlazePose.
 * Click "Start Inference/Stop Inference" to run inference continuously.
-* Click "Use Thunder/Lightning" to change between Lightning and Thunder
-MoveNet models.
 * Click "Input->Load Image/Video" to load a static image or video file.
 
 Expected results:
