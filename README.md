@@ -390,7 +390,3 @@ under.
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
 for mass production.\
 Any software support provided is for evaluation purposes only.
-
-### Pose Estimation Mode
-The Pose Estimation Mode is currently only supported on the RZ/G2L and RZ/G2LC
-platforms due to the MoveNet models requiring TensorFlow v2.5.3 to function correctly.
