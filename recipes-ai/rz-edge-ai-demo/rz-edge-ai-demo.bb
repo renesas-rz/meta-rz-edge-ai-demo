@@ -6,9 +6,11 @@ require recipes-qt/qt5/qt5.inc
 
 # GPL-2.0 license applies to the application and shopping basket model, label and prices files
 # Apache-2.0 license applies to object detection, pose estimation AI models and label files
-LICENSE = "GPL-2.0 & Apache-2.0"
+# CC-BY-2.0 license applies to the object detection image files sourced from Open Images Dataset V5
+LICENSE = "GPL-2.0 & Apache-2.0 & CC-BY-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6 \
-                    file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
+                    file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10 \
+		    file://${WORKDIR}/media/CC-BY-2.0;md5=a8e963175ca315520e460930e46cd907"
 
 DEPENDS = "qtmultimedia opencv gstreamer1.0 tensorflow-lite armnn"
 RDEPENDS_${PN} = "libopencv-core libopencv-videoio libopencv-imgcodecs libopencv-imgproc armnn-dev"
