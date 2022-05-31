@@ -360,12 +360,14 @@ the application.
 
 ### Pose Estimation Mode
 * Click "Load AI Model" to load a different pose model. Currently supported: MoveNet,
-BlazePose.
+BlazePose, HandPose.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
 
 Expected results:
-* Lines are drawn which connect the joints and facial features of the detected person.
+* BlazePose, MoveNet: Lines are drawn which connect the joints and facial features
+of the detected person.
+* HandPose: Lines are drawn which connect the hand-knuckle points of the detected hand.
 * Total FPS and inference time is shown in the top right-hand corner of
 the application.
 * 2-D Point Projection of the identified pose is shown in the right-hand side of the
