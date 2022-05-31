@@ -4,8 +4,8 @@ DESCRIPTION = "Build and install the RZ/G Edge AI Demo application"
 inherit populate_sdk_qt5 qmake5
 require recipes-qt/qt5/qt5.inc
 
-# GPL-2.0 license applies to the application and shopping basket model, label and prices files
-# Apache-2.0 license applies to object detection, pose estimation AI models and label files
+# GPL-2.0 license applies to the application, files/models/shoppingBasketDemo.tflite, files/labels/shoppingBasketDemo_labels.txt. and files/prices
+# Apache-2.0 license applies to all models in files/models apart from shoppingBasketDemo.tflite
 # CC-BY-2.0 license applies to the object detection image files sourced from Open Images Dataset V5
 LICENSE = "GPL-2.0 & Apache-2.0 & CC-BY-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6 \
