@@ -325,6 +325,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 * Click "Demo Mode->Shopping Basket" to select the shopping basket mode.
 * Click "Demo Mode->Object Detection" to select the object detection mode.
 * Click "Demo Mode->Pose Estimation" to select the pose estimation mode.
+* Click "Demo Mode->Face Detection" to select the face detection mode.
 
 ### Object Detection Mode (Default)
 * Click "Start Inference/Stop Inference" to run inference continuously.
@@ -373,6 +374,17 @@ the application.
 * 2-D Point Projection of the identified pose is shown in the right-hand side of the
 application.
 
+### Face Detection Mode
+* Click "Start Inference/Stop Inference" to run inference continuously.
+* Click "Input->Load Image/Video" to load a static image or video file.
+
+Expected results:
+* Lines are drawn around the facial regions of the detected face.
+* Total FPS and inference time is shown in the top right-hand corner of
+the application.
+* 2-D Point Projection of the identified face mesh is shown in the right-hand side of
+the application.
+
 ### Common Mode Settings
 * Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Inference Engine->TensorFlow Lite + ArmNN delegate" to run inference
@@ -392,3 +404,7 @@ under.
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
 for mass production.\
 Any software support provided is for evaluation purposes only.
+
+### Face Detection Mode
+The Face Landmark model used in the Face Detection Mode requires the face to be close
+to the camera to detect accurately, approximately 15cm away.
