@@ -380,8 +380,10 @@ application.
 
 Expected results:
 * Lines are drawn around the facial regions of the detected face.
-* Total FPS and inference time is shown in the top right-hand corner of
+* Total FPS is shown in the top right-hand corner of
 the application.
+* Inference time for the Face Detection and Face Landmark models are shown separately
+in the top right-hand corner of the application.
 * 2-D Point Projection of the identified face mesh is shown in the right-hand side of
 the application.
 
@@ -404,7 +406,3 @@ under.
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
 for mass production.\
 Any software support provided is for evaluation purposes only.
-
-### Face Detection Mode
-The Face Landmark model used in the Face Detection Mode requires the face to be close
-to the camera to detect accurately, approximately 15cm away.
