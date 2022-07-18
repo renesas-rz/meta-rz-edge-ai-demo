@@ -375,17 +375,22 @@ the application.
 application.
 
 ### Face Detection Mode
+* Click "Detect Face" to detect the face of the identified person.
+* Click "Detect Iris" to detect the irises of the identified person.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
 
 Expected results:
-* Lines are drawn around the facial regions of the detected face.
+* Face Detection: Lines are drawn around the facial regions of the detected face.
+* Iris Detection: Lines are drawn around the irises of the detected face.
 * Total FPS is shown in the top right-hand corner of
 the application.
-* Inference time for the Face Detection and Face Landmark models are shown separately
+* Inference time for all models used in the pipeline are shown separately
 in the top right-hand corner of the application.
-* 2-D Point Projection of the identified face mesh is shown in the right-hand side of
-the application.
+* Face Detection: 2-D Point Projection of the identified face mesh is shown in the
+right-hand side of the application.
+* Iris Detection: Diagram showing the inference pipeline from detecting the face to
+identifying the iris is shown in the right-hand side of the application.
 
 ### Common Mode Settings
 * Click "Input->Load Camera Feed" to return to live camera feed.
