@@ -427,17 +427,12 @@ copy_output () {
 			# DTB
 			copy_file $(find "${bin_dir}" -type l -iname "*${PLATFORM}*.dtb")
 			# Bootloaders
-			copy_file "${bin_dir}/bl2_bp-${PLATFORM}.bin"
-			copy_file "${bin_dir}/bl2-${PLATFORM}.bin"
-			copy_file "${bin_dir}/bl31-${PLATFORM}.bin"
-			copy_file "${bin_dir}/fip-${PLATFORM}.bin"
-			copy_file "${bin_dir}/u-boot-elf-${PLATFORM}.srec"
+			copy_file "${bin_dir}/bl2_bp-${PLATFORM}.srec"
+			copy_file "${bin_dir}/fip-${PLATFORM}.srec"
 			copy_file "${bin_dir}/Flash_Writer*.mot"
 			if [ ${PLATFORM} == "smarc-rzg2l" ]; then
-				copy_file "${bin_dir}/bl2_bp-${PLATFORM}_pmic.bin"
-				copy_file "${bin_dir}/bl2-${PLATFORM}_pmic.bin"
-				copy_file "${bin_dir}/bl31-${PLATFORM}_pmic.bin"
-				copy_file "${bin_dir}/fip-${PLATFORM}_pmic.bin"
+				copy_file "${bin_dir}/bl2_bp-${PLATFORM}_pmic.srec"
+				copy_file "${bin_dir}/fip-${PLATFORM}_pmic.srec"
 			fi
 		fi
 	fi
