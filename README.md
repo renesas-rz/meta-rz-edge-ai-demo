@@ -411,3 +411,7 @@ under.
 The CMOS camera sensor (OV5645) is no longer available, and should not be used
 for mass production.\
 Any software support provided is for evaluation purposes only.
+
+This demo adds and enables auto focus for the OV5645 sensor by default.\
+If you would like to diable this support, please add `DISABLE_OV5645_AF="1"` to
+local.conf.
