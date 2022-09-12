@@ -2,10 +2,10 @@
 #
 # Simple script to build the RZ Edge AI Demo: https://github.com/renesas-rz/meta-rz-edge-ai-demo
 # The script supports building for the following devices:
-#   RZ/G2: hihope-rzg2m,  ek874
+#   RZ/G2: hihope-rzg2m, ek874
 #   RZ/G2L: smarc-rzg2l, smarc-rzg2lc
 #
-# This script has been tested on Ubuntu 20.04 and Ubuntu 18.04.
+# This script has been tested on Ubuntu 20.04.
 #
 # SPDX-License-Identifier: MIT
 # Copyright (C) 2022 Renesas Electronics Corp.
@@ -32,6 +32,8 @@ SKIP_LICENSE_WARNING=false
 BUILD_SDK=false
 YOCTO_DL_DIR=""
 YOCTO_SSTATE_DIR=""
+RZG_BSP_VER="BSP-3.0.0"
+RZG_AI_BSP_VER="v5.0.0"
 
 ################################################################################
 # Helpers
@@ -54,8 +56,8 @@ print_help () {
 	 -d                 Install OS dependencies before starting build.
 	 -e                 Marks that proprietary libraries have already been
 	                    extracted to the directory specified by -l.
-	                    For the RZ/G2L BSP the directory should contain the
-	                    contents of the meta-rz-features layer.
+	                    The directory should contain the contents of the
+			    meta-rz-features layer.
 	 -j <dir>           Set directory to use for the Yocto DL_DIR variable.
 	 -k <dir>           Set directory to use for the Yocto SSTATE_DIR
 	                    variable.
@@ -204,127 +206,74 @@ download_source () {
 	echo "#################################################################"
 	echo "Downloading source..."
 
-	if [ ${FAMILY} == "rzg2" ]; then
-		update_git_repo \
-			poky \
-			git://git.yoctoproject.org/poky \
-			7e7ee662f5dea4d090293045f7498093322802cc
+	update_git_repo \
+		poky \
+		git://git.yoctoproject.org/poky \
+		bba323389749ec3e306509f8fb12649f031be152
 
-		cd poky; git cherry-pick 0810ac6b92; cd -
+	cd poky
+	# gcc-runtime: Avoid march conflicts with newer cortex-a55 CPUs
+	git cherry-pick 9e44438a9deb7b6bfac3f82f31a1a7ad138a5d16
+	# metadata_scm.bbclass: Use immediate expansion for the METADATA_* variables
+	git cherry-pick cfd897e213debb2e32589378b2f5d390a265eb7f
+	cd -
 
-		update_git_repo \
-			meta-linaro \
-			git://git.linaro.org/openembedded/meta-linaro.git \
-			75dfb67bbb14a70cd47afda9726e2e1c76731885
+	update_git_repo \
+		meta-openembedded \
+		git://git.openembedded.org/meta-openembedded \
+		ec978232732edbdd875ac367b5a9c04b881f2e19
 
-		update_git_repo \
-			meta-openembedded \
-			git://git.openembedded.org/meta-openembedded \
-			352531015014d1957d6444d114f4451e241c4d23
+	update_git_repo \
+		meta-gplv2 \
+		https://git.yoctoproject.org/meta-gplv2 \
+		60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 
-		update_git_repo \
-			meta-gplv2 \
-			https://git.yoctoproject.org/meta-gplv2 \
-			f875c60ecd6f30793b80a431a2423c4b98e51548
+	update_git_repo \
+		meta-qt5 \
+		https://github.com/meta-qt5/meta-qt5.git \
+		c1b0c9f546289b1592d7a895640de103723a0305
 
-		update_git_repo \
-			meta-qt5 \
-			https://github.com/meta-qt5/meta-qt5.git \
-			c1b0c9f546289b1592d7a895640de103723a0305
+	update_git_repo \
+		meta-renesas \
+		https://github.com/renesas-rz/meta-renesas.git \
+		${RZG_BSP_VER}
 
-		update_git_repo \
-			meta-virtualization \
-			https://git.yoctoproject.org/git/meta-virtualization \
-			b704c689b67639214b9568a3d62e82df27e9434f
+	update_git_repo \
+		meta-renesas-ai \
+		https://github.com/renesas-rz/meta-renesas-ai.git \
+		${RZG_AI_BSP_VER}
 
-		update_git_repo \
-			meta-rzg2 \
-			https://github.com/renesas-rz/meta-rzg2.git \
-			BSP-1.0.10-update1
-
-		update_git_repo \
-			meta-renesas-ai \
-			https://github.com/renesas-rz/meta-renesas-ai.git \
-			v4.7.0
-
-		update_git_repo \
-			meta-rz-edge-ai-demo \
-			${META_RZ_EDGE_AI_DEMO_URL} \
-			${META_RZ_EDGE_AI_DEMO_VER}
-	elif [ ${FAMILY} == "rzg2l" ]; then
-		update_git_repo \
-			poky \
-			git://git.yoctoproject.org/poky \
-			dunfell-23.0.13
-
-		cd poky; git cherry-pick e256885889
-
-		# We need to cherry-pick the following commit to prevent SDK basehash issue
-		git cherry-pick cfd897e213d; cd -
-
-		update_git_repo \
-			meta-openembedded \
-			git://git.openembedded.org/meta-openembedded \
-			ab9fca485e13f6f2f9761e1d2810f87c2e4f060a
-
-		update_git_repo \
-			meta-gplv2 \
-			https://git.yoctoproject.org/meta-gplv2 \
-			60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
-
-		update_git_repo \
-			meta-qt5 \
-			https://github.com/meta-qt5/meta-qt5.git \
-			c1b0c9f546289b1592d7a895640de103723a0305
-
-		update_git_repo \
-			meta-virtualization \
-			https://git.yoctoproject.org/git/meta-virtualization \
-			9e9868ef3d6e5da7f0ecd0680fcd69324593842b
-
-		update_git_repo \
-			meta-rzg2 \
-			https://github.com/renesas-rz/meta-rzg2.git \
-			rzg2l_bsp_v1.4
-
-		update_git_repo \
-			meta-renesas-ai \
-			https://github.com/renesas-rz/meta-renesas-ai.git \
-			v4.7.0
-
-		update_git_repo \
-			meta-rz-edge-ai-demo \
-			${META_RZ_EDGE_AI_DEMO_URL} \
-			${META_RZ_EDGE_AI_DEMO_VER}
-	fi
+	update_git_repo \
+		meta-rz-edge-ai-demo \
+		${META_RZ_EDGE_AI_DEMO_URL} \
+		${META_RZ_EDGE_AI_DEMO_VER}
 }
 
 install_prop_libs () {
 	echo "#################################################################"
 	echo "Installing proprietary libraries..."
 
-	if [ ${FAMILY} == "rzg2" ]; then
-		if ! $PROP_LIBS_EXTRACTED; then
+	if [ ${FAMILY} == "rzg2" || ${PLATFORM} == "smarc-rzg2lc" ]; then
+		if $PROP_LIBS_EXTRACTED; then
+			rm -rf ${WORK_DIR}/meta-rz-features
+			cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
+		else
 			pushd ${PROP_DIR}
-			tar -zxf RZG2_Group_*_Software_Package_for_Linux_*.tar.gz
-			PROP_DIR=${PROP_DIR}/proprietary
+			unzip RTK0EF0045Z0022AZJ-v1.0_EN.zip
+			tar -xf RTK0EF0045Z0022AZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 			popd
 		fi
-
-		pushd ${WORK_DIR}/meta-rzg2
-		sh docs/sample/copyscript/copy_proprietary_softwares.sh \
-			-f ${PROP_DIR}
-		popd
 	elif [ ${FAMILY} == "rzg2l" ]; then
 		if $PROP_LIBS_EXTRACTED; then
 			rm -rf ${WORK_DIR}/meta-rz-features
 			cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
 		else
 			pushd ${PROP_DIR}
-			unzip RTK0EF0045Z13001ZJ-v0.81_EN.zip
-			tar -xf RTK0EF0045Z13001ZJ-v0.81_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
-			unzip RTK0EF0045Z15001ZJ-v0.55_EN.zip
-			tar -xf RTK0EF0045Z15001ZJ-v0.55_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+			unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
+			tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+
+			unzip RTK0EF0045Z15001ZJ-v0.56_EN.zip
+			tar -xf RTK0EF0045Z15001ZJ-v0.56_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 			popd
 		fi
 	fi
@@ -373,11 +322,7 @@ do_sdk_build () {
 	echo "#################################################################"
 	echo "Starting SDK build..."
 
-	if [ ${FAMILY} == "rzg2" ]; then
-		bitbake core-image-qt-sdk -c populate_sdk
-	elif [ ${FAMILY} == "rzg2l" ]; then
-		bitbake core-image-qt -c populate_sdk
-	fi
+	bitbake core-image-qt -c populate_sdk
 }
 
 # $1..$n: File (including path) to copy to output directory

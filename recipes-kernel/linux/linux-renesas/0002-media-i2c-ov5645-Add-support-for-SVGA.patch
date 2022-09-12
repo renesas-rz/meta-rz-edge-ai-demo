@@ -1,18 +1,21 @@
-From c669813e29002d9edff9715c6ba9597f6c61a30f Mon Sep 17 00:00:00 2001
-From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Date: Thu, 30 Sep 2021 20:31:13 +0100
-Subject: [PATCH] media: i2c: ov5645: Add support for SVGA
+From d4e750213c378428db56b91e3d88cfe60911d4e7 Mon Sep 17 00:00:00 2001
+From: Gareth Williams <gareth.williams.jx@renesas.com>
+Date: Wed, 21 Sep 2022 10:18:02 +0100
+Subject: [PATCH 2/3] media: i2c: ov5645: Add support for SVGA
 
+Ported to rz-5.10-cip1.
+
+Signed-off-by: Gareth Williams <gareth.williams.jx@renesas.com>
 Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
  drivers/media/i2c/ov5645.c | 62 ++++++++++++++++++++++++++++++++++++++
  1 file changed, 62 insertions(+)
 
 diff --git a/drivers/media/i2c/ov5645.c b/drivers/media/i2c/ov5645.c
-index b913aaa8fa63..ef2be3bab1c6 100644
+index 8b6f18d7e157..ea544a08ebd1 100644
 --- a/drivers/media/i2c/ov5645.c
 +++ b/drivers/media/i2c/ov5645.c
-@@ -490,6 +490,59 @@ static const struct reg_value ov5645_setting_30fps_NTSC_720_480[] = {
+@@ -486,6 +486,59 @@ static const struct reg_value ov5645_setting_30fps_NTSC_720_480[] = {
  	{ 0x4202, 0x00 }
  };
  
@@ -72,7 +75,7 @@ index b913aaa8fa63..ef2be3bab1c6 100644
  static const struct reg_value ov5645_setting_720P_1280_720[] = {
  	{ 0x3612, 0xa9 },
  	{ 0x3614, 0x50 },
-@@ -758,6 +811,15 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -754,6 +807,15 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.link_freq = 0, /* an index in link_freq[] */
  		.max_fps = OV5645_45_FPS
  	},
@@ -89,5 +92,5 @@ index b913aaa8fa63..ef2be3bab1c6 100644
  		.width = 1280,
  		.height = 720,
 -- 
-2.17.1
+2.25.1
 

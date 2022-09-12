@@ -43,9 +43,6 @@ do_configure_prepend () {
 	export SDKTARGETSYSROOT="../recipe-sysroot"
 }
 
-EXTRA_QMAKEVARS_PRE_smarc-rzg2l += "DEFINES+=DUNFELL"
-EXTRA_QMAKEVARS_PRE_smarc-rzg2lc += "DEFINES+=DUNFELL"
-
 do_install_append () {
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/icons

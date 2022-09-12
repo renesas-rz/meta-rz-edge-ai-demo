@@ -14,14 +14,12 @@ variables:
   CI_DEMO_REPO_REV: "AUTOREV"
 
 .rzg2:
-  image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-18.04-latest
   variables:
-    PROP_LIBS_BRANCH: rzg2_v1.0.10_prod
+    PROP_LIBS_BRANCH: rzg2_v3.0.0_prod
 
 .rzg2l:
-  image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-20.04-latest
   variables:
-    PROP_LIBS_BRANCH: rzg2l_v1.4_prod
+    PROP_LIBS_BRANCH: rzg2l_v3.0.0_prod
 
 .hihope-rzg2m:
   extends: [".rzg2"]
@@ -44,6 +42,7 @@ variables:
     PLATFORM: smarc-rzg2lc
 
 .build:
+  image: gitlab.renesas.solutions:5050/spl2/continuous-integration/dockerfiles:ubuntu-20.04-latest
   tags:
     - yocto
   before_script:

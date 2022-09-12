@@ -1,23 +1,26 @@
-From 8d5c4a2fceefb0d2fa4da24305ebdc7130abfdcb Mon Sep 17 00:00:00 2001
-From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Date: Fri, 12 Nov 2021 16:02:39 +0000
-Subject: [PATCH] media: i2c: ov5645: Add AF support
+From 0f521b69eb604a60ddd3e57b847f7dc128b17859 Mon Sep 17 00:00:00 2001
+From: Gareth Williams <gareth.williams.jx@renesas.com>
+Date: Wed, 21 Sep 2022 10:28:27 +0100
+Subject: [PATCH 3/3] media: i2c: ov5645: Add AF support
 
 This patch adds continious AF supprt to sensor.
 Note the AF firmware is picked up from [1].
 [1] https://coral.googlesource.com/linux-imx/+/refs/heads/master/
 drivers/media/platform/mxc/capture/ov5645_mipi_v2.c
 
+Ported to rz-5.10-cip1
+
+Signed-off-by: Gareth Williams <gareth.williams.jx@renesas.com>
 Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- drivers/media/i2c/ov5645.c | 1498 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 1494 insertions(+), 4 deletions(-)
+ drivers/media/i2c/ov5645.c | 1501 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 1497 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/media/i2c/ov5645.c b/drivers/media/i2c/ov5645.c
-index ef2be3bab1c6..38ca4da57d29 100644
+index ea544a08ebd1..b01e3e3a434d 100644
 --- a/drivers/media/i2c/ov5645.c
 +++ b/drivers/media/i2c/ov5645.c
-@@ -100,6 +100,8 @@ static const struct ov5645_pixfmt ov5645_formats[] = {
+@@ -98,6 +98,8 @@ static const struct ov5645_pixfmt ov5645_formats[] = {
  struct reg_value {
  	u16 reg;
  	u8 val;
@@ -26,7 +29,7 @@ index ef2be3bab1c6..38ca4da57d29 100644
  };
  
  struct ov5645_mode_info {
-@@ -147,6 +149,1378 @@ struct ov5645 {
+@@ -143,6 +145,1380 @@ struct ov5645 {
  	bool streaming;
  };
  
@@ -1402,10 +1405,12 @@ index ef2be3bab1c6..38ca4da57d29 100644
 +	{0x3029, 0x7F, 0, 0}, {0x3000, 0x00, 0, 0},
 +};
 +
++
++
  static inline struct ov5645 *to_ov5645(struct v4l2_subdev *sd)
  {
  	return container_of(sd, struct ov5645, sd);
-@@ -399,8 +1773,8 @@ static const struct reg_value ov5645_setting_VGA_640_480[] = {
+@@ -395,8 +1771,8 @@ static const struct reg_value ov5645_setting_VGA_640_480[] = {
  	{ 0x3614, 0x50 },
  	{ 0x3618, 0x00 },
  	{ 0x3034, 0x18 },
@@ -1416,7 +1421,7 @@ index ef2be3bab1c6..38ca4da57d29 100644
  	{ 0x3600, 0x09 },
  	{ 0x3601, 0x43 },
  	{ 0x3708, 0x66 },
-@@ -644,8 +2018,8 @@ static const struct reg_value ov5645_setting_sxga[] = {
+@@ -640,8 +2016,8 @@ static const struct reg_value ov5645_setting_sxga[] = {
  	{ 0x3614, 0x50 },
  	{ 0x3618, 0x00 },
  	{ 0x3034, 0x18 },
@@ -1427,7 +1432,7 @@ index ef2be3bab1c6..38ca4da57d29 100644
  	{ 0x3600, 0x09 },
  	{ 0x3601, 0x43 },
  	{ 0x3708, 0x66 },
-@@ -951,6 +2325,114 @@ static int ov5645_read_reg(struct ov5645 *ov5645, u16 reg, u8 *val)
+@@ -898,6 +2274,114 @@ static int ov5645_read_reg(struct ov5645 *ov5645, u16 reg, u8 *val)
  	return 0;
  }
  
@@ -1542,7 +1547,7 @@ index ef2be3bab1c6..38ca4da57d29 100644
  static const struct ov5645_mode_info *
  ov5645_find_mode(struct ov5645 *sensor, enum ov5645_frame_rate fr,
  		 int width, int height, bool nearest)
-@@ -1515,6 +2997,13 @@ static int ov5645_s_stream(struct v4l2_subdev *subdev, int enable)
+@@ -1463,10 +2947,19 @@ static int ov5645_s_stream(struct v4l2_subdev *subdev, int enable)
  			return ret;
  		}
  
@@ -1553,17 +1558,15 @@ index ef2be3bab1c6..38ca4da57d29 100644
 +		usleep_range(100, 101);
 +		ov5645_enable_cont_af(ov5645);
 +
++
  		ret = ov5645_write_reg(ov5645, OV5645_IO_MIPI_CTRL00, 0x45);
- 		if (ret < 0)
- 			return ret;
-@@ -1530,6 +3019,7 @@ static int ov5645_s_stream(struct v4l2_subdev *subdev, int enable)
  		if (ret < 0)
  			return ret;
  
 +		ov5645_release_af(ov5645);
  		ret = ov5645_write_reg(ov5645, OV5645_SYSTEM_CTRL0,
- 				       OV5645_SYSTEM_CTRL0_STOP);
+ 				       OV5645_SYSTEM_CTRL0_START);
  		if (ret < 0)
 -- 
-2.17.1
+2.25.1
 

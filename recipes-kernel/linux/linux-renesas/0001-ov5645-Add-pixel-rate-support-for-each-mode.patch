@@ -1,21 +1,24 @@
-From c6a5a893937d6b86744b3f9a5ade6c3fb71a84ec Mon Sep 17 00:00:00 2001
-From: Biju Das <biju.das.jz@bp.renesas.com>
-Date: Fri, 12 Nov 2021 15:11:33 +0000
-Subject: [PATCH 08/10] ov5645: Add pixel rate support for each mode
+From f086d2896fc781b4cc5dfaf0e69eaae43d2a92e5 Mon Sep 17 00:00:00 2001
+From: Gareth Williams <gareth.williams.jx@renesas.com>
+Date: Wed, 21 Sep 2022 10:13:55 +0100
+Subject: [PATCH 1/3] ov5645: Add pixel rate support for each mode
+
+Ported to rz-5.10-cip1.
 
 Signed-off-by: Biju Das <biju.das.jz@bp.renesas.com>
 Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Signed-off-by: Gareth Williams <gareth.williams.jx@renesas.com>
 ---
- drivers/media/i2c/ov5645.c | 195 +++++++++++++++++++++++++++++++++++--
- 1 file changed, 189 insertions(+), 6 deletions(-)
+ drivers/media/i2c/ov5645.c | 198 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 192 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/media/i2c/ov5645.c b/drivers/media/i2c/ov5645.c
-index 40767e4bd80e..b913aaa8fa63 100644
+index 2766e5303ba0..8b6f18d7e157 100644
 --- a/drivers/media/i2c/ov5645.c
 +++ b/drivers/media/i2c/ov5645.c
-@@ -73,6 +73,30 @@
- #define OV5645_SDE_SAT_U		0x5583
- #define OV5645_SDE_SAT_V		0x5584
+@@ -70,6 +70,31 @@ static const char * const ov5645_supply_name[] = {
+ 
+ #define OV5645_NUM_SUPPLIES ARRAY_SIZE(ov5645_supply_name)
  
 +enum ov5645_frame_rate {
 +	OV5645_15_FPS = 0,
@@ -41,10 +44,11 @@ index 40767e4bd80e..b913aaa8fa63 100644
 +	{ MEDIA_BUS_FMT_UYVY8_2X8, V4L2_COLORSPACE_SRGB, },
 +};
 +
++
  struct reg_value {
  	u16 reg;
  	u8 val;
-@@ -85,6 +109,7 @@ struct ov5645_mode_info {
+@@ -82,6 +107,7 @@ struct ov5645_mode_info {
  	u32 data_size;
  	u32 pixel_clock;
  	u32 link_freq;
@@ -52,8 +56,8 @@ index 40767e4bd80e..b913aaa8fa63 100644
  };
  
  struct ov5645 {
-@@ -102,6 +127,8 @@ struct ov5645 {
- 	struct regulator *analog_regulator;
+@@ -97,6 +123,8 @@ struct ov5645 {
+ 	struct regulator_bulk_data supplies[OV5645_NUM_SUPPLIES];
  
  	const struct ov5645_mode_info *current_mode;
 +	enum ov5645_frame_rate current_fr;
@@ -61,7 +65,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  
  	struct v4l2_ctrl_handler ctrls;
  	struct v4l2_ctrl *pixel_clock;
-@@ -117,6 +144,7 @@ struct ov5645 {
+@@ -112,6 +140,7 @@ struct ov5645 {
  
  	struct gpio_desc *enable_gpio;
  	struct gpio_desc *rst_gpio;
@@ -69,7 +73,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  };
  
  static inline struct ov5645 *to_ov5645(struct v4l2_subdev *sd)
-@@ -718,7 +746,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -713,7 +742,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_VGA_640_480,
  		.data_size = ARRAY_SIZE(ov5645_setting_VGA_640_480),
  		.pixel_clock = 112000000,
@@ -79,7 +83,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  	{
  		.width = 720,
-@@ -726,7 +755,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -721,7 +751,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_30fps_NTSC_720_480,
  		.data_size = ARRAY_SIZE(ov5645_setting_30fps_NTSC_720_480),
  		.pixel_clock = 112000000,
@@ -89,7 +93,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  	{
  		.width = 1280,
-@@ -734,7 +764,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -729,7 +760,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_720P_1280_720,
  		.data_size = ARRAY_SIZE(ov5645_setting_720P_1280_720),
  		.pixel_clock = 112000000,
@@ -99,7 +103,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  	{
  		.width = 1280,
-@@ -742,7 +773,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -737,7 +769,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_sxga,
  		.data_size = ARRAY_SIZE(ov5645_setting_sxga),
  		.pixel_clock = 112000000,
@@ -109,7 +113,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  	{
  		.width = 1920,
-@@ -750,7 +782,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -745,7 +778,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_1080p,
  		.data_size = ARRAY_SIZE(ov5645_setting_1080p),
  		.pixel_clock = 168000000,
@@ -119,7 +123,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  	{
  		.width = 2592,
-@@ -758,7 +791,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
+@@ -753,7 +787,8 @@ static const struct ov5645_mode_info ov5645_mode_info_data[] = {
  		.data = ov5645_setting_full,
  		.data_size = ARRAY_SIZE(ov5645_setting_full),
  		.pixel_clock = 168000000,
@@ -129,7 +133,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	},
  };
  
-@@ -855,6 +889,27 @@ static int ov5645_read_reg(struct ov5645 *ov5645, u16 reg, u8 *val)
+@@ -801,6 +836,27 @@ static int ov5645_read_reg(struct ov5645 *ov5645, u16 reg, u8 *val)
  	return 0;
  }
  
@@ -157,7 +161,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  static int ov5645_set_aec_mode(struct ov5645 *ov5645, u32 mode)
  {
  	u8 val = ov5645->aec_pk_manual;
-@@ -983,6 +1038,49 @@ static int ov5645_s_power(struct v4l2_subdev *sd, int on)
+@@ -928,6 +984,50 @@ static int ov5645_s_power(struct v4l2_subdev *sd, int on)
  	return ret;
  }
  
@@ -204,10 +208,11 @@ index 40767e4bd80e..b913aaa8fa63 100644
 +	return mode ? rate : -EINVAL;
 +}
 +
++
  static int ov5645_set_saturation(struct ov5645 *ov5645, s32 value)
  {
  	u32 reg_value = (value * 0x10) + 0x40;
-@@ -1137,6 +1235,86 @@ static int ov5645_enum_frame_size(struct v4l2_subdev *subdev,
+@@ -1082,6 +1182,87 @@ static int ov5645_enum_frame_size(struct v4l2_subdev *subdev,
  	return 0;
  }
  
@@ -291,10 +296,11 @@ index 40767e4bd80e..b913aaa8fa63 100644
 +	return ret;
 +}
 +
++
  static struct v4l2_mbus_framefmt *
  __ov5645_get_pad_format(struct ov5645 *ov5645,
  			struct v4l2_subdev_pad_config *cfg,
-@@ -1283,6 +1461,8 @@ static int ov5645_s_stream(struct v4l2_subdev *subdev, int enable)
+@@ -1228,6 +1409,8 @@ static int ov5645_s_stream(struct v4l2_subdev *subdev, int enable)
  				       OV5645_SYSTEM_CTRL0_START);
  		if (ret < 0)
  			return ret;
@@ -303,7 +309,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	} else {
  		ret = ov5645_write_reg(ov5645, OV5645_IO_MIPI_CTRL00, 0x40);
  		if (ret < 0)
-@@ -1302,6 +1482,8 @@ static const struct v4l2_subdev_core_ops ov5645_core_ops = {
+@@ -1247,6 +1430,8 @@ static const struct v4l2_subdev_core_ops ov5645_core_ops = {
  };
  
  static const struct v4l2_subdev_video_ops ov5645_video_ops = {
@@ -312,7 +318,7 @@ index 40767e4bd80e..b913aaa8fa63 100644
  	.s_stream = ov5645_s_stream,
  };
  
-@@ -1312,6 +1494,7 @@ static const struct v4l2_subdev_pad_ops ov5645_subdev_pad_ops = {
+@@ -1257,6 +1442,7 @@ static const struct v4l2_subdev_pad_ops ov5645_subdev_pad_ops = {
  	.get_fmt = ov5645_get_format,
  	.set_fmt = ov5645_set_format,
  	.get_selection = ov5645_get_selection,
@@ -321,5 +327,5 @@ index 40767e4bd80e..b913aaa8fa63 100644
  
  static const struct v4l2_subdev_ops ov5645_subdev_ops = {
 -- 
-2.17.1
+2.25.1
 
