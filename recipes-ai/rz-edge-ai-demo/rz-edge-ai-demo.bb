@@ -50,12 +50,19 @@ do_install_append () {
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/logos
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/models
+	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/face-detection
+	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/object-detection
+	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/pose-estimation
+	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/shopping-basket
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/prices
 	install -d ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/scripts
 	install -m 444 ${WORKDIR}/icons/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/icons
 	install -m 444 ${WORKDIR}/labels/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/labels
 	install -m 444 ${WORKDIR}/logos/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/logos
-	install -m 444 ${WORKDIR}/media/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media
+	install -m 444 ${WORKDIR}/media/face-detection/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/face-detection
+	install -m 444 ${WORKDIR}/media/object-detection/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/object-detection
+	install -m 444 ${WORKDIR}/media/pose-estimation/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/pose-estimation
+	install -m 444 ${WORKDIR}/media/shopping-basket/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/media/shopping-basket
 	install -m 444 ${WORKDIR}/models/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/models
 	install -m 444 ${WORKDIR}/prices/* ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}/prices
 	install -m 555 ${B}/rz-edge-ai-demo ${D}${RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY}
