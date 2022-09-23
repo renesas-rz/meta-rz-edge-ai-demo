@@ -260,29 +260,27 @@ install_prop_libs () {
 	echo "#################################################################"
 	echo "Installing proprietary libraries..."
 
-	if [ ${FAMILY} == "rzg2" || ${PLATFORM} == "smarc-rzg2lc" ]; then
-		if $PROP_LIBS_EXTRACTED; then
-			rm -rf ${WORK_DIR}/meta-rz-features
-			cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
-		else
-			pushd ${PROP_DIR}
-			unzip RTK0EF0045Z0022AZJ-v1.0_EN.zip
-			tar -xf RTK0EF0045Z0022AZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
-			popd
-		fi
-	elif [ ${FAMILY} == "rzg2l" ]; then
-		if $PROP_LIBS_EXTRACTED; then
-			rm -rf ${WORK_DIR}/meta-rz-features
-			cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
-		else
-			pushd ${PROP_DIR}
-			unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
-			tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+	if $PROP_LIBS_EXTRACTED; then
+		rm -rf ${WORK_DIR}/meta-rz-features
+		cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
+	elif [ ${FAMILY} == "rzg2" ]; then
+		pushd ${PROP_DIR}
+		unzip RTK0EF0045Z0022AZJ-v1.0_EN.zip
+		tar -xf RTK0EF0045Z0022AZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		popd
+	elif [ ${PLATFORM} == "smarc-rzg2l" ]; then
+		pushd ${PROP_DIR}
+		unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
+		tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 
-			unzip RTK0EF0045Z15001ZJ-v0.56_EN.zip
-			tar -xf RTK0EF0045Z15001ZJ-v0.56_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
-			popd
-		fi
+		unzip RTK0EF0045Z15001ZJ-v0.56_EN.zip
+		tar -xf RTK0EF0045Z15001ZJ-v0.56_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		popd
+	elif [ ${PLATFORM} == "smarc-rzg2lc" ]; then
+		pushd ${PROP_DIR}
+		unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
+		tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		popd
 	fi
 }
 
