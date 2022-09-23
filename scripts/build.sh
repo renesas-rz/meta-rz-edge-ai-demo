@@ -46,7 +46,7 @@ print_help () {
 	 apart from the proprietary GFX & multimedia libraries.
 
 	 USAGE: ${COMMAND_NAME} -p <platform> -l <dir> [-c] [-d] [-e] \\
-	                    [-j <dir>] [-k <dir> [-o <dir>] \\
+	                    [-j <dir>] [-k <dir>] [-o <dir>] \\
 	                    [-s] [-t] [-T] [-h]
 
 	 OPTIONS:
