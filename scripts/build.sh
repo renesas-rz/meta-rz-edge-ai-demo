@@ -46,8 +46,8 @@ print_help () {
 	 apart from the proprietary GFX & multimedia libraries.
 
 	 USAGE: ${COMMAND_NAME} -p <platform> -l <dir> [-c] [-d] [-e] \\
-	                    [-j <dir>] [-k <dir>] [-o <dir>] \\
-	                    [-s] [-t] [-T] [-h]
+	                    [-j <dir>] [-k <dir>] [-n <threads>] \\
+	                    [-o <dir>] [-s] [-t] [-T] [-h] \\
 
 	 OPTIONS:
 	 -h                 Print this help and exit.
@@ -63,6 +63,10 @@ print_help () {
 	                    variable.
 	 -l <dir>           Location when proprietary libraries have been
 	                    downloaded to.
+	 -n <threads>       Number of threads to be used for the build. This
+	                    will be set for PARALLEL_MAKE and BB_NUMBER_THREADS.
+	                    By default these settings will be set to the number
+	                    of CPU cores on the build host (nproc).
 	 -o <dir>           Location to copy binaries to when build is complete.
 	                    By default ${OUTPUT_DIR} will be used.
 	 -p <platform>      Platform to build for. Choose from:
@@ -78,7 +82,7 @@ print_help () {
 ################################################################################
 # Options parsing
 
-while getopts ":cdej:k:l:o:p:stTh" opt; do
+while getopts ":cdej:k:l:n:o:p:stTh" opt; do
         case $opt in
 	c)
 		BUILD=false
@@ -102,6 +106,9 @@ while getopts ":cdej:k:l:o:p:stTh" opt; do
                         exit 1
                 fi
                 PROP_DIR="$(realpath "${OPTARG}")"
+                ;;
+        n)
+                THREADS="${OPTARG}"
                 ;;
         o)
                 if [ ! -d "${OPTARG}" ]; then
@@ -298,6 +305,11 @@ configure_build () {
 
 	if $SKIP_LICENSE_WARNING; then
 		sed -i 's/#LICENSE_FLAGS_WHITELIST/LICENSE_FLAGS_WHITELIST/g' ./conf/local.conf
+	fi
+
+	if [ ! -z ${THREADS} ]; then
+		echo "BB_NUMBER_THREADS = \"${THREADS}\"" >> ./conf/local.conf
+		echo "PARALLEL_MAKE = \"-j ${THREADS}\"" >> ./conf/local.conf
 	fi
 
         echo RZ_EDGE_AI_DEMO_REPO = \"${RZ_EDGE_AI_DEMO_REPO}\" >> ./conf/local.conf
