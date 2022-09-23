@@ -48,12 +48,13 @@ variables:
   before_script:
     - printenv
     - rm -rf ${OUTPUT_DIR} ${PROP_LIBS_DIR} ${BUILD_DIR}
+    - export BUILD_THREADS=$(($(nproc)/2))
   script:
     - mkdir -p ${OUTPUT_DIR} ${PROP_LIBS_DIR} ${BUILD_DIR}
     - git clone git@gitlab.renesas.solutions:spl2/continuous-integration/proprietary-libs.git ${PROP_LIBS_DIR}
     - pushd ${PROP_LIBS_DIR} && git checkout ${PROP_LIBS_BRANCH} && popd
     - pushd ${BUILD_DIR}
-    - ${CI_PROJECT_DIR}/scripts/build.sh -l ${PROP_LIBS_DIR} -p ${PLATFORM} -o ${OUTPUT_DIR} -e -s -j ${DL_DIR} -k ${SSTATE_DIR} ${EXTRA_BUILD_ARGS}
+    - ${CI_PROJECT_DIR}/scripts/build.sh -l ${PROP_LIBS_DIR} -p ${PLATFORM} -n ${BUILD_THREADS} -o ${OUTPUT_DIR} -e -s -j ${DL_DIR} -k ${SSTATE_DIR} ${EXTRA_BUILD_ARGS}
   cache:
       - key: "downloads"
         paths:
