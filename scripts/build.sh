@@ -260,7 +260,7 @@ install_prop_libs () {
 	echo "#################################################################"
 	echo "Installing proprietary libraries..."
 
-	if $PROP_LIBS_EXTRACTED; then
+	if [ $PROP_LIBS_EXTRACTED ] && [ ${PROP_DIR} != "${WORK_DIR}/meta-rz-features" ]; then
 		rm -rf ${WORK_DIR}/meta-rz-features
 		cp -r ${PROP_DIR} ${WORK_DIR}/meta-rz-features
 	elif [ ${FAMILY} == "rzg2" ]; then
