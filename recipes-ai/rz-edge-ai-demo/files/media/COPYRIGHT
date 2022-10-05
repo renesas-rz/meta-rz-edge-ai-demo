@@ -1,37 +1,3 @@
-Open Images Dataset V5.
-License: Attribution 2.0 Generic (CC BY 2.0)
-URL: https://creativecommons.org/licenses/by/2.0/
-
-- bird.bmp
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F015p6&id=05cae1286a212d52
-
-- cat.bmp, cat_720p.jpg, cat_1080p.jpg
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F01yrx&id=02b4196ce8a0e541
-
-- sunflower.bmp
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0ftb8&id=57c28a05d44c2ff9
-
-- dragonfly.bmp
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0ft9s&id=d9ed55a129da5505
-
-- face.jpg (1028 * 712)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0dzct&id=959ec6a16e85dc22&type=detection
-
-- pets.jpg (2360 * 1983)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0bt9lr&id=82270c27bacdcaa4&type=detection
-
-- hot_dog.jpg (3264 * 2448)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F01b9xk&id=1170c58625bec5dc&type=detection
-
-- parrot.jpg (1688 * 3064)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0gv1x&id=0f3ebab958f44f5f&type=detection
-
-- owl.jpg (1600 * 1200)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F09d5_&id=165178f034f150ba&type=detection
-
-- bird_segmentation.bmp bird_segmentation_mask.bmp (1600 * 1066)
-   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=segmentation&c=%2Fm%2F015p6&id=12142db5804533c8
-
 Naval History and Heritage Command
 License: All information on this site is in the public domain and may be distributed or copied unless otherwise specified. Use of appropriate byline/photo/image credits is requested.
 URL: http://www.history.navy.mil/warning.htm
@@ -39,12 +5,85 @@ URL: http://www.history.navy.mil/warning.htm
 - grace_hopper.bmp
    https://www.history.navy.mil/content/history/nhhc/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-96000/NH-96919-KN/_jcr_content/mediaitem/image.img.jpg/1438289956819.jpg
 
+Open Images Dataset V5.
+License: Attribution 2.0 Generic (CC BY 2.0)
+URL: https://creativecommons.org/licenses/by/2.0/
+
+- bird.bmp
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F015p6&id=05cae1286a212d52
+
+- bird_segmentation.bmp bird_segmentation_mask.bmp (1600 * 1066)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=segmentation&c=%2Fm%2F015p6&id=12142db5804533c8
+
+- cat.bmp, cat_720p.jpg, cat_1080p.jpg
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F01yrx&id=02b4196ce8a0e541
+
+- dragonfly.bmp
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0ft9s&id=d9ed55a129da5505
+
+- face.jpg (1028 * 712)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0dzct&id=959ec6a16e85dc22&type=detection
+
+- hot_dog.jpg (3264 * 2448)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F01b9xk&id=1170c58625bec5dc&type=detection
+
+- owl.jpg (1600 * 1200)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F09d5_&id=165178f034f150ba&type=detection
+
+- parrot.jpg (1688 * 3064)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0gv1x&id=0f3ebab958f44f5f&type=detection
+
+- pets.jpg (2360 * 1983)
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&c=%2Fm%2F0bt9lr&id=82270c27bacdcaa4&type=detection
+
+- sunflower.bmp
+   https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0ftb8&id=57c28a05d44c2ff9
+
 Pexels Stock Photographs
 License: Pexels License
 URL: https://www.pexels.com/license/
 
+- boxing_training.mp4
+   https://www.pexels.com/video/man-training-in-boxing-4438094/
+
+- exercising_using_battle_ropes.mp4
+   https://www.pexels.com/video/man-exercising-using-battle-ropes-7187517/
+
+- karate.jpg
+   https://www.pexels.com/photo/fashion-man-people-woman-7045638/
+
+- face_looking_away.jpg
+   https://www.pexels.com/photo/photo-of-man-wearing-grey-shirt-2204166/
+
+- face_looking_towards_camera.jpg
+   https://www.pexels.com/photo/photography-of-a-guy-wearing-green-shirt-1222271/
+
+- face_shaking.mp4
+   https://www.pexels.com/video/man-shaking-his-head-6277899/
+
+- face_smiling.jpg
+   https://www.pexels.com/photo/man-in-black-suit-jacket-3831612/
+
+- hand_sign_letters.mp4
+   https://www.pexels.com/video/hands-hand-sign-letters-4662100/
+
 - man_holding_skateboard.jpg
    https://www.pexels.com/photo/man-holding-skateboard-in-hand-9724751/
+
+- man_jumping_on_beach.jpg
+   https://www.pexels.com/photo/photo-of-man-jumping-on-the-beach-2787855/
+
+- man_practicing_yoga.mp4
+   https://www.pexels.com/video/man-practicing-yoga-6785092/
+
+- man_running.jpg
+   https://www.pexels.com/photo/man-in-green-t-shirt-and-black-shorts-running-on-the-park-5037354/
+
+- polina-tankilevitch-ballet.mp4
+   https://www.pexels.com/video/a-woman-showing-her-ballet-skill-in-turning-one-footed-5385885/
+
+- polina-tankilevitch-exercise.mp4
+   https://www.pexels.com/video/woman-working-out-6525502/
 
 - skateboarding.jpg
    https://www.pexels.com/photo/a-bearded-man-skateboarding-5236958/
@@ -52,62 +91,11 @@ URL: https://www.pexels.com/license/
 - skateboard_stunt.jpg
    https://www.pexels.com/photo/man-doing-skateboard-stunt-1764506/
 
-- woman_doing_yoga.jpg
-   https://www.pexels.com/photo/woman-in-purple-long-sleeve-shirt-and-gray-leggings-doing-yoga-3758157/
+- skipping.mp4
+   https://www.pexels.com/video/a-man-jumping-over-the-skip-rope-4812842/
 
 - soccer_freestyling.jpg
    https://www.pexels.com/photo/smiling-ethnic-soccer-player-with-ball-on-head-5609029/
 
-- man_running.jpg
-   https://www.pexels.com/photo/man-in-green-t-shirt-and-black-shorts-running-on-the-park-5037354/
-
-- man_jumping_on_beach.jpg
-   https://www.pexels.com/photo/photo-of-man-jumping-on-the-beach-2787855/
-
-- karate.jpg
-   https://www.pexels.com/photo/fashion-man-people-woman-7045638/
-
-- hand_sign_ok.jpg
-   https://www.pexels.com/photo/hand-sign-1366997/
-
-- hand_pointing_upwards.jpg
-   https://www.pexels.com/photo/hand-pointing-upwards-9017408/
-
-- hand_sign_rock_and_roll.jpg
-   https://www.pexels.com/photo/person-s-hand-doing-rock-and-roll-hand-sign-4662172/
-
-- hand_sign_three.jpg
-   https://www.pexels.com/photo/person-s-hand-doing-hand-signals-9017560/
-
-- face_looking_away.jpg
-   https://www.pexels.com/photo/photo-of-man-wearing-grey-shirt-2204166/
-
-- face_smiling.jpg
-   https://www.pexels.com/photo/man-in-black-suit-jacket-3831612/
-
-- face_looking_towards_camera.jpg
-   https://www.pexels.com/photo/photography-of-a-guy-wearing-green-shirt-1222271/
-
-- boxing_training.mp4
-   https://www.pexels.com/video/man-training-in-boxing-4438094/
-
-- man_practicing_yoga.mp4
-   https://www.pexels.com/video/man-practicing-yoga-6785092/
-
-- exercising_using_battle_ropes.mp4
-   https://www.pexels.com/video/man-exercising-using-battle-ropes-7187517/
-
-- skipping.mp4
-   https://www.pexels.com/video/a-man-jumping-over-the-skip-rope-4812842/
-
-- hand_sign_letters.mp4
-   https://www.pexels.com/video/hands-hand-sign-letters-4662100/
-
-- face_shaking.mp4
-   https://www.pexels.com/video/man-shaking-his-head-6277899/
-
-- polina-tankilevitch-ballet.mp4
-   https://www.pexels.com/video/a-woman-showing-her-ballet-skill-in-turning-one-footed-5385885/
-
-- polina-tankilevitch-exercise.mp4
-   https://www.pexels.com/video/woman-working-out-6525502/
+- woman_doing_yoga.jpg
+   https://www.pexels.com/photo/woman-in-purple-long-sleeve-shirt-and-gray-leggings-doing-yoga-3758157/
