@@ -16,9 +16,6 @@ set -e
 # Global parameters
 META_RZ_EDGE_AI_DEMO_URL="${CI_REPOSITORY_URL:-https://github.com/renesas-rz/meta-rz-edge-ai-demo.git}"
 META_RZ_EDGE_AI_DEMO_VER="${CI_COMMIT_REF_NAME:-master}"
-RZ_EDGE_AI_DEMO_REPO="${CI_DEMO_REPO:-github.com/renesas-rz/rz-edge-ai-demo.git}"
-RZ_EDGE_AI_DEMO_REPO_BRANCH="${CI_DEMO_REPO_BRANCH:-master}"
-RZ_EDGE_AI_DEMO_REPO_PROTOCOL="${CI_DEMO_REPO_PROTOCOL:-https}"
 WORK_DIR="${PWD}"
 COMMAND_NAME="$0"
 INSTALL_DEPENDENCIES=false
@@ -310,9 +307,17 @@ configure_build () {
 		echo "PARALLEL_MAKE = \"-j ${THREADS}\"" >> ./conf/local.conf
 	fi
 
-        echo RZ_EDGE_AI_DEMO_REPO = \"${RZ_EDGE_AI_DEMO_REPO}\" >> ./conf/local.conf
-        echo RZ_EDGE_AI_DEMO_REPO_BRANCH = \"${RZ_EDGE_AI_DEMO_REPO_BRANCH}\" >> ./conf/local.conf
-        echo RZ_EDGE_AI_DEMO_REPO_PROTOCOL = \"${RZ_EDGE_AI_DEMO_REPO_PROTOCOL}\" >> ./conf/local.conf
+	# Only overwrite RZ Edge demo repository SCR_URI settings if set by CI
+	# Otherwise use the default setting from the recipe
+	if [ ! -z ${CI_DEMO_REPO+x} ]; then
+		echo RZ_EDGE_AI_DEMO_REPO = \"${CI_DEMO_REPO}\" >> ./conf/local.conf
+	fi
+	if [ ! -z ${CI_DEMO_REPO_PROTOCOL+x} ]; then
+		echo RZ_EDGE_AI_DEMO_REPO_PROTOCOL = \"${CI_DEMO_REPO_PROTOCOL}\" >> ./conf/local.conf
+	fi
+	if [ ! -z ${CI_DEMO_REPO_BRANCH+x} ]; then
+		echo RZ_EDGE_AI_DEMO_REPO_BRANCH = \"${CI_DEMO_REPO_BRANCH}\" >> ./conf/local.conf
+	fi
 	if [ ! -z ${CI_DEMO_REPO_REV+x} ]; then
 		if [ ${CI_DEMO_REPO_REV} = "AUTOREV" ]; then
 			echo SRCREV_rz-edge-ai-demo = \"\${AUTOREV}\" >> ./conf/local.conf
