@@ -46,8 +46,6 @@ git clone https://github.com/renesas-rz/meta-rz-edge-ai-demo.git
 ```
 cd $WORK/poky
 git checkout -b tmp bba323389749ec3e306509f8fb12649f031be152
-git cherry-pick 9e44438a9d
-git cherry-pick cfd897e213
 cd $WORK/meta-openembedded
 git checkout -b tmp ec978232732edbdd875ac367b5a9c04b881f2e19
 cd $WORK/meta-gplv2
@@ -55,7 +53,7 @@ git checkout -b tmp 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 cd $WORK/meta-qt5
 git checkout -b tmp c1b0c9f546289b1592d7a895640de103723a0305
 cd $WORK/meta-renesas
-git checkout -b tmp BSP-3.0.0
+git checkout -b tmp BSP-3.0.1
 cd $WORK/meta-renesas-ai
 git checkout -b tmp v5.0.0
 ```

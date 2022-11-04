@@ -29,7 +29,7 @@ SKIP_LICENSE_WARNING=false
 BUILD_SDK=false
 YOCTO_DL_DIR=""
 YOCTO_SSTATE_DIR=""
-RZG_BSP_VER="BSP-3.0.0"
+RZG_BSP_VER="BSP-3.0.1"
 RZG_AI_BSP_VER="v5.0.0"
 
 ################################################################################
@@ -213,14 +213,7 @@ download_source () {
 	update_git_repo \
 		poky \
 		git://git.yoctoproject.org/poky \
-		bba323389749ec3e306509f8fb12649f031be152
-
-	cd poky
-	# gcc-runtime: Avoid march conflicts with newer cortex-a55 CPUs
-	git cherry-pick 9e44438a9deb7b6bfac3f82f31a1a7ad138a5d16
-	# metadata_scm.bbclass: Use immediate expansion for the METADATA_* variables
-	git cherry-pick cfd897e213debb2e32589378b2f5d390a265eb7f
-	cd -
+		1e298a42223dd2628288b372caf66c52506a8081
 
 	update_git_repo \
 		meta-openembedded \
@@ -267,16 +260,16 @@ install_prop_libs () {
 		popd
 	elif [ ${PLATFORM} == "smarc-rzg2l" ]; then
 		pushd ${PROP_DIR}
-		unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
-		tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
+		tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 
-		unzip RTK0EF0045Z15001ZJ-v0.56_EN.zip
-		tar -xf RTK0EF0045Z15001ZJ-v0.56_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		unzip RTK0EF0045Z15001ZJ-v1.0_EN.zip
+		tar -xf RTK0EF0045Z15001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 		popd
 	elif [ ${PLATFORM} == "smarc-rzg2lc" ]; then
 		pushd ${PROP_DIR}
-		unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
-		tar -xf RTK0EF0045Z13001ZJ-v1.0_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
+		unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
+		tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features.tar.gz -C ${WORK_DIR}
 		popd
 	fi
 }
