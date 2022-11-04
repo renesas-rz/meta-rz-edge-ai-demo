@@ -30,7 +30,7 @@ BUILD_SDK=false
 YOCTO_DL_DIR=""
 YOCTO_SSTATE_DIR=""
 RZG_BSP_VER="BSP-3.0.1"
-RZG_AI_BSP_VER="v5.0.0"
+RZG_AI_BSP_VER="3babcf6279e1d63c224f9f5956df493c1c69b6f8"
 
 ################################################################################
 # Helpers
