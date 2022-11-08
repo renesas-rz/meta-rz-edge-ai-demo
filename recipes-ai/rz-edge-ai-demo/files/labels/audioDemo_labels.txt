@@ -1,0 +1,8 @@
+background
+down
+go
+left
+off
+right
+stop
+up

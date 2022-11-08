@@ -5,12 +5,15 @@ inherit populate_sdk_qt5 qmake5
 require recipes-qt/qt5/qt5.inc
 
 # GPL-2.0 license applies to the application, files/models/shoppingBasketDemo.tflite, files/labels/shoppingBasketDemo_labels.txt. and files/prices
-# Apache-2.0 license applies to all models in files/models apart from shoppingBasketDemo.tflite
+# Apache-2.0 license applies to all models in files/models apart from shoppingBasketDemo.tflite and browserfft-speech-renesas.tflite
 # CC-BY-2.0 license applies to the object detection image files sourced from Open Images Dataset V5
-LICENSE = "GPL-2.0 & Apache-2.0 & CC-BY-2.0"
+# Attribution-4.0 license applies to file/models/browserfft-speech-renesas.tflite and the associated audioDemo_labels.txt
+LICENSE = "GPL-2.0 & Apache-2.0 & CC-BY-2.0 & Attribution-4.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6 \
                     file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10 \
-		    file://${WORKDIR}/media/CC-BY-2.0;md5=a8e963175ca315520e460930e46cd907"
+		    file://${WORKDIR}/media/CC-BY-2.0;md5=a8e963175ca315520e460930e46cd907 \
+		    file://${WORKDIR}/media/Attribution-4.0;md5=60f8103054954b2c75f1faa295ea3590 \
+"
 
 DEPENDS = "qtmultimedia opencv gstreamer1.0 tensorflow-lite armnn"
 RDEPENDS_${PN} = "libopencv-core libopencv-videoio libopencv-imgcodecs libopencv-imgproc armnn-dev"
