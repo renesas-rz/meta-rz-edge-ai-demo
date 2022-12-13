@@ -266,6 +266,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 * Click "Demo Mode->Object Detection" to select the object detection mode.
 * Click "Demo Mode->Pose Estimation" to select the pose estimation mode.
 * Click "Demo Mode->Face Detection" to select the face detection mode.
+* Click "Demo Mode->Audio Command" to select the audio command mode.
 
 ### Object Detection Mode (Default)
 * Click "Start Inference/Stop Inference" to run inference continuously.
@@ -331,6 +332,17 @@ in the top right-hand corner of the application.
 right-hand side of the application.
 * Iris Detection: Diagram showing the inference pipeline from detecting the face to
 identifying the iris is shown in the right-hand side of the application.
+
+### Audio Command Mode
+* Click "Talk" to run inference on the currently selected audio source.
+* Click "Input->Load Audio File" to load a .wav file to run inference on.
+
+Expected results:
+* Listens to audio based direction commands (Left, Right, Up, Down) to move an arrow across a grid on screen.
+* The Go command moves the arrow one position in the direction it is facing.
+* The Off command reset arrow position, command history and count.
+* The Stop command halts recording from the audio source.
+* Inference time, command history and command count are shown on the right of the screen.
 
 ### Common Mode Settings
 * Click "Input->Load Camera Feed" to return to live camera feed.
