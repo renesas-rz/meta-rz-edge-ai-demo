@@ -268,7 +268,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
 * Click "Demo Mode->Face Detection" to select the face detection mode.
 * Click "Demo Mode->Audio Command" to select the audio command mode.
 
-### Object Detection Mode (Default)
+### Object Detection Mode
 * Click "Start Inference/Stop Inference" to run inference continuously.
     * Stop Inference clears the inference and FPS results and resumes live camera feed.
 * Click "Load AI Model" to load a different model and label file.
@@ -300,7 +300,7 @@ right-hand side of the application.
 * Total items and inference time is shown in the top right-hand corner of
 the application.
 
-### Pose Estimation Mode
+### Pose Estimation Mode (Default)
 * Click "Load AI Model" to load a different pose model. Currently supported: MoveNet,
 BlazePose, HandPose.
 * Click "Start Inference/Stop Inference" to run inference continuously.
