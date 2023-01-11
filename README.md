@@ -273,6 +273,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
     * Stop Inference clears the inference and FPS results and resumes live camera feed.
 * Click "Load AI Model" to load a different model and label file.
 * Click "Input->Load Image/Video" to load a static image or video file.
+* Click "Input->Load Camera Feed" to return to live camera feed.
 
 Expected results:
 * Boxes are drawn around the detected objects.
@@ -289,6 +290,7 @@ the application.
     * Inference is automatically run on the image and the results are displayed.
 * Click "Next Basket" to clear inference results and resume live camera feed.
 * Click "Input->Load Image" to load a static image file.
+* Click "Input->Load Camera Feed" to return to live camera feed.
 
 Expected results:
 * Boxes are drawn around the detected items.
@@ -305,6 +307,7 @@ the application.
 BlazePose, HandPose.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
+* Click "Input->Load Camera Feed" to return to live camera feed.
 
 Expected results:
 * BlazePose, MoveNet: Lines are drawn which connect the joints and facial features
@@ -320,6 +323,7 @@ application.
 * Click "Detect Iris" to detect the irises of the identified person.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
+* Click "Input->Load Camera Feed" to return to live camera feed.
 
 Expected results:
 * Face Detection: Lines are drawn around the facial regions of the detected face.
@@ -336,6 +340,7 @@ identifying the iris is shown in the right-hand side of the application.
 ### Audio Command Mode
 * Click "Talk" to run inference on the currently selected audio source.
 * Click "Input->Load Audio File" to load a .wav file to run inference on.
+* Click "Input->Use Microphone" to load the attached USB microphone.
 
 Expected results:
 * Listens to audio based direction commands (Left, Right, Up, Down) to move an arrow across a grid on screen.
@@ -343,9 +348,10 @@ Expected results:
 * The Off command reset arrow position, command history and count.
 * The Stop command halts recording from the audio source.
 * Inference time, command history and command count are shown on the right of the screen.
+* The microphone sends one second clips for inference continously.
+* Loading a second long wav file can be ran for inference once for each time the talk button is pressed.
 
 ### Common Mode Settings
-* Click "Input->Load Camera Feed" to return to live camera feed.
 * Click "Inference Engine->TensorFlow Lite + ArmNN delegate" to run inference
 using TensorFlow Lite with ArmNN delegate enabled.
 * Click "Inference Engine->TensorFlow Lite + XNNPack delegate" to run inference
