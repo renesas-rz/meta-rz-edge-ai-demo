@@ -273,7 +273,7 @@ Alternatively, use the GUI buttons on the top left to start the demo.
     * Stop Inference clears the inference and FPS results and resumes live camera feed.
 * Click "Load AI Model" to load a different model and label file.
 * Click "Input->Load Image/Video" to load a static image or video file.
-* Click "Input->Load Camera Feed" to return to live camera feed.
+* Click "Input->Use Camera" to return to live camera feed.
 
 Expected results:
 * Boxes are drawn around the detected objects.
@@ -290,7 +290,7 @@ the application.
     * Inference is automatically run on the image and the results are displayed.
 * Click "Next Basket" to clear inference results and resume live camera feed.
 * Click "Input->Load Image" to load a static image file.
-* Click "Input->Load Camera Feed" to return to live camera feed.
+* Click "Input->Use Camera" to return to live camera feed.
 
 Expected results:
 * Boxes are drawn around the detected items.
@@ -307,7 +307,7 @@ the application.
 BlazePose, HandPose.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
-* Click "Input->Load Camera Feed" to return to live camera feed.
+* Click "Input->Use Camera" to return to live camera feed.
 
 Expected results:
 * BlazePose, MoveNet: Lines are drawn which connect the joints and facial features
@@ -323,7 +323,7 @@ application.
 * Click "Detect Iris" to detect the irises of the identified person.
 * Click "Start Inference/Stop Inference" to run inference continuously.
 * Click "Input->Load Image/Video" to load a static image or video file.
-* Click "Input->Load Camera Feed" to return to live camera feed.
+* Click "Input->Use Camera" to return to live camera feed.
 
 Expected results:
 * Face Detection: Lines are drawn around the facial regions of the detected face.
