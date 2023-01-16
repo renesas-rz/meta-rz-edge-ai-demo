@@ -55,7 +55,7 @@ git checkout -b tmp c1b0c9f546289b1592d7a895640de103723a0305
 cd $WORK/meta-renesas
 git checkout -b tmp BSP-3.0.1
 cd $WORK/meta-renesas-ai
-git checkout -b tmp 3babcf6279e1d63c224f9f5956df493c1c69b6f8
+git checkout -b tmp 3032939d08a1df7187ab29bab621c3de8b5f3cb7
 ```
 
 3. Define machine to build for
