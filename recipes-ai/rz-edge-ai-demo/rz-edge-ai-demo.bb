@@ -18,7 +18,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 DEPENDS = "qtmultimedia opencv gstreamer1.0 tensorflow-lite armnn"
 RDEPENDS_${PN} = "libopencv-core libopencv-videoio libopencv-imgcodecs libopencv-imgproc armnn-dev"
 
-PV = "5.0+git${SRCPV}"
+PV = "6.0+git${SRCPV}"
 
 RZ_EDGE_AI_DEMO_INSTALL_DIRECTORY ?= "/opt/rz-edge-ai-demo"
 
@@ -37,8 +37,8 @@ SRC_URI = " \
 	file://populate_scripts.sh \
 "
 
-# v5.0
-SRCREV_rz-edge-ai-demo ?= "60ddfcbaf1a9e7b588ad0836067addcc3f5d1e2e"
+# v6.0
+SRCREV_rz-edge-ai-demo ?= "afebdc85235b39f6be71d5870c19b367b8fd86e7"
 
 S = "${WORKDIR}/git"
 

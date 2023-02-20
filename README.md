@@ -342,15 +342,21 @@ right-hand side of the application.
 identifying the iris is shown in the right-hand side of the application.
 
 ### Audio Command Mode
-* Click "Talk" to run inference on the currently selected audio source.
+* Click "Speak Commands" to run inference on the currently selected audio source.
 * Click "Input->Load Audio File" to load a .wav file to run inference on.
 * Click "Input->Use Microphone" to load the attached USB microphone.
+* Noise is filtered according to a threshold on the input volume. Adjust the
+  "Noise Threshold" dial to optimise the noise filtering according to the noise
+  from the environment. Increase the threshold in noisy environments and reduce
+  the threshold in quiet environments.
+* The input volume depends on a number of factors: the microphone and its gain,
+  the distance between the speaker and the microphone, and the loudness of the
+  speaker. Only words spoken with a volume that's above the noise threshold are
+  considered for inference. Adjust the "MIC Gain" dial according to the specific
+  setting.
 
 Expected results:
 * Listens to audio based direction commands (Left, Right, Up, Down) to move an arrow across a grid on screen.
-* The Go command moves the arrow one position in the direction it is facing.
-* The Off command reset arrow position, command history and count.
-* The Stop command halts recording from the audio source.
 * Inference time, command history and command count are shown on the right of the screen.
 * The microphone sends one second clips for inference continously.
 * Loading a second long wav file can be ran for inference once for each time the talk button is pressed.
