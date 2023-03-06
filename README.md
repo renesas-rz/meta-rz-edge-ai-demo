@@ -216,6 +216,10 @@ Make the following peripheral connections:
 * Mouse or USB touch
 * HDMI
 * Power
+* Insert uSD card into the appropriate slot:
+	* RZ/G2M - CN1601
+	* RZ/G2L and RZ/G2LC - CN10 (on carrier board)
+	* RZ/G2E - CN13
 
 Then apply power to the board and enter U-Boot.
 
@@ -230,7 +234,7 @@ setenv bootcmd 'ext4load mmc 0 0x48080000 boot/Image; ext4load mmc 0 0x48000000 
 
 RZ/G2M:
 ```
-setenv bootargs 'rw root=/dev/mmcblk0p1 rootwait'
+setenv bootargs 'rw root=/dev/mmcblk1p1 rootwait'
 setenv bootcmd 'ext4load mmc 0 0x48080000 boot/Image; ext4load mmc 0 0x48000000 boot/r8a774a1-hihope-rzg2m-ex-mipi-2.1.dtb; booti 0x48080000 - 0x48000000'
 ```
 
