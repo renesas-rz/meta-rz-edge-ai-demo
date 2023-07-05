@@ -66,29 +66,34 @@ export PLATFORM=<machine>
 Replace `<machine>` with `ek874`, `hihope-rzg2m`, `smarc-rzg2l` or `smarc-rzg2lc`.
 
 4. Download proprietary software packages from RZ/G website
-```
-America: https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-mpus/rzg-linux-platform/rzg-marketplace/verified-linux-package/rzg-verified-linux-package
-Europe: https://www.renesas.com/eu/en/products/microcontrollers-microprocessors/rz-mpus/rzg-linux-platform/rzg-marketplace/verified-linux-package/rzg-verified-linux-package
-Asia: https://www.renesas.com/sg/en/products/microcontrollers-microprocessors/rz-mpus/rzg-linux-platform/rzg-marketplace/verified-linux-package/rzg-verified-linux-package
-Japan: https://www.renesas.com/jp/en/products/microcontrollers-microprocessors/rz-mpus/rzg-linux-platform/rzg-marketplace/verified-linux-package/rzg-verified-linux-package
-```
+
+RZ/G2L:
+* GFX: [RTK0EF0045Z13001ZJ-v1.3_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-graphic-library-evaluation-version-v13-rzg2l-and-rzg2lc-rtk0ef0045z13001zj-v13xxzip?language=en&r=1467981)
+* MMP: [RTK0EF0045Z15001ZJ-v1.0_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-video-codec-library-evaluation-version-v10-rzg2l-rtk0ef0045z15001zj-v10xxzip?language=en&r=1467981)
+
+RZ/G2LC:
+* GFX: [RTK0EF0045Z13001ZJ-v1.3_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-graphic-library-evaluation-version-v13-rzg2l-and-rzg2lc-rtk0ef0045z13001zj-v13xxzip?language=en&r=1467981)
+
+RZ/G2E and RZ/G2M:
+* GFX & MMP: [RTK0EF0045Z0022AZJ-v1.0_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-multimedia-package-evaluation-version-v10-verified-linux-package-rzg2h-rzg2m-rzg2n-and-rzg2e?r=1597486)
+
 
 5. Add the proprietary libraries
 
 RZ/G2L:
 ```
 cd $WORK
-unzip RTK0EF0045Z15001ZJ-v0.56_EN.zip
-unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
-tar -xf RTK0EF0045Z15001ZJ-v0.56_EN.zip/meta-rz-features.tar.gz
-tar -xf RTK0EF0045Z13001ZJ-v1.0_EN.zip/meta-rz-features.tar.gz
+unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
+unzip RTK0EF0045Z15001ZJ-v1.0_EN.zip
+tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
+tar -xf RTK0EF0045Z15001ZJ-v1.0_EN.zip/meta-rz-features_codec_v1.0.tar.gz
 ```
 
 RZ/G2LC:
 ```
 cd $WORK
-unzip RTK0EF0045Z13001ZJ-v1.0_EN.zip
-tar -xf RTK0EF0045Z13001ZJ-v1.0_EN.zip/meta-rz-features.tar.gz
+unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
+tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
 ```
 
 RZ/G2E and RZ/G2M
@@ -97,8 +102,6 @@ cd $WORK
 unzip  RTK0EF0045Z0022AZJ-v1.0_EN.zip
 tar -xf RTK0EF0045Z0022AZJ-v1.0_EN.zip/meta-rz-features.tar.gz
 ```
-
-
 
 6. Execute source command
 ```
