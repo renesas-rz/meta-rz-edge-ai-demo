@@ -85,22 +85,22 @@ RZ/G2L:
 cd $WORK
 unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
 unzip RTK0EF0045Z15001ZJ-v1.0_EN.zip
-tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
-tar -xf RTK0EF0045Z15001ZJ-v1.0_EN.zip/meta-rz-features_codec_v1.0.tar.gz
+tar xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
+tar xf RTK0EF0045Z15001ZJ-v1.0_EN.zip/meta-rz-features_codec_v1.0.tar.gz
 ```
 
 RZ/G2LC:
 ```
 cd $WORK
 unzip RTK0EF0045Z13001ZJ-v1.3_EN.zip
-tar -xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
+tar xf RTK0EF0045Z13001ZJ-v1.3_EN/meta-rz-features_graphics_v1.3.tar.gz
 ```
 
 RZ/G2E and RZ/G2M
 ```
 cd $WORK
-unzip  RTK0EF0045Z0022AZJ-v1.0_EN.zip
-tar -xf RTK0EF0045Z0022AZJ-v1.0_EN.zip/meta-rz-features.tar.gz
+unzip RTK0EF0045Z0022AZJ-v1.0_EN.zip
+tar xf RTK0EF0045Z0022AZJ-v1.0_EN.zip/meta-rz-features.tar.gz
 ```
 
 6. Execute source command
@@ -193,7 +193,7 @@ sudo parted /dev/sdc --script print
 Mount the root file system and extract it to the SD card
 ```
 mount -t ext4 /dev/sdc1 /mnt/SD
-sudo tar -xf core-image-qt-$PLATFORM.tar.gz -C /mnt/SD
+sudo tar xf core-image-qt-$PLATFORM.tar.gz -C /mnt/SD
 ```
 
 ### Using Wic Images
